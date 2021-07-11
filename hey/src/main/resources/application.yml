@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+
+spring:
+  application:
+    name: spring-cloud-consul-hey
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+         ##注册到consul的服务名称
+        service-name: service-hey
+#  compression:
+#    enabled: true
+#fastdfs:
+#  nginx:
+#    host: http://192.168.91.128/
+
+  datasource:
+        url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver

@@ -1,0 +1,76 @@
+server:
+  port: 8083
+
+
+spring:
+  application:
+    name: spring-cloud-consul-gateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+         ##注册到consul的服务名称
+        service-name: service-gateway
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true #使用小写service-id
+      routes:
+        - id: service-hi
+          uri: lb://service-hi #service-hi为hi服务配置在注册中心consul上的服务名
+          predicates:
+            - Path=/hiservice/** # 匹配路径带有hiservice的则访问lb://service-hi服务 ，例：http://localhost:8083/hiservice/hi/test?hi=1323
+          filters:
+            - StripPrefix=1
+
+        - id: service-hi
+          uri: lb://service-hello
+          predicates:
+            - Path=/helloservice/**
+          filters:
+            - StripPrefix=1
+
+        - id: service-test
+          uri: https://www.jianshu.com # 例：http://localhost:8083/test/hi?name=1323  ，匹配端口后的第一个单词
+          predicates:
+            - Path=/test/**
+          filters:
+            - StripPrefix=1
+
+
+
+#  datasource:
+#      url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#      username: root
+#      password: root
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+#ribbon:
+#  ReadTimeout: 120000  #请求处理的超时时间
+#  ConnectTimeout: 30000  #请求连接的超时时间
+
+
+#spring:
+#  application:
+#    name: spring-cloud-consul-gateway
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      discovery:
+#         ##注册到consul的服务名称
+#        service-name: service-gateway
+#
+#  main:
+#    allow-bean-definition-overriding: true
+##
+##
+#  datasource:
+#      url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#      username: root
+#      password: root
+#      driver-class-name: com.mysql.cj.jdbc.Driver
