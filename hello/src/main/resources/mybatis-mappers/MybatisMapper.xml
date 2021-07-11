@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里填写对应的Dao文件所在的路径 -->
+<mapper namespace="com.test.hello.mapper.MybatisMapper">
+    <!-- 填写数据库里实例Person对应的表的表名 -->
+    <!-- 这里是作为一个变量使用 -->
+    <sql id="table">student</sql>
+
+    <!-- id属性填写Dao文件里的函数名称 xxType是参数或是结果的类型根据情况填写 -->
+    <!-- 查询所有   -->
+    <select id="getStudents" parameterType="com.test.hello.pojo.vo.request.QueryStudent" resultType="com.test.hello.pojo.dao.Student">
+        SELECT
+        *
+        FROM
+        <include refid="table"/>
+        <where>
+            <if test="keyword != null">
+                and name like CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="grades != null and grades.length > 0">
+                and `grade` in
+                <foreach collection="grades" item="grade" index="no" open="(" separator="," close=")">
+                    #{grade}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据id查询 -->
+    <select id="getStudentById" resultType="com.test.hello.pojo.dao.Student">
+        SELECT
+        *
+        FROM
+        <include refid="table"/>
+        WHERE
+        id = #{id}
+    </select>
+
+    <!-- 增 -->
+    <insert id="insert" parameterType="com.test.hello.pojo.dao.Student">
+        INSERT INTO
+        <include refid="table"/>
+        (name,age,gender,grade)
+        VALUES
+        (#{name}, #{age}, #{gender},#{grade})
+    </insert>
+
+    <!-- 改 -->
+    <update id="update" parameterType="com.test.hello.pojo.dao.Student">
+        UPDATE <include refid="table"/>
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="grade != null">grade = #{grade},</if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <!-- 删 -->
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM
+        <include refid="table"/>
+        WHERE
+        id = #{id}
+    </delete>
+
+    <!--批量新增-->
+    <insert id="batchSave">
+        INSERT INTO
+        <include refid="table"/>
+        (name,age,gender,grade)
+        VALUES
+        <foreach collection ="studentList" item="student" separator =",">
+            (#{student.name}, #{student.age}, #{student.gender},#{student.grade})
+        </foreach >
+    </insert>
+
+    <!--批量修改方式一-->
+    <!--Mybatis映射文件中的sql语句默认是不支持以" ; " 结尾的，也就是不支持多条sql语句的执行。
+    所以需要在连接mysql的url上加 &allowMultiQueries=true 这个才可以执行。
+    但需要修改mysql的连接url，让全局支持多sql执行，不太安全-->
+    <!--https://segmentfault.com/a/1190000018084851-->
+    <!--<update id="batchUpdate"  parameterType="java.util.List">
+        <foreach collection="studentList" item="student" index="index" open="" close="" separator=";">
+            update
+            <include refid="table"/>
+            <set>
+                age=#{student.age},
+                gender=#{student.gender},
+                grade=#{student.grade}
+            </set>
+            where id = #{student.id} and name = #{student.name}
+        </foreach>
+    </update>-->
+
+    <!--批量修改方式二-->
+    <!--https://www.awaimai.com/2103.html  ，见 3.2 更新多值-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        update
+        <include refid="table"/>
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="age =case" suffix="end,">
+                <foreach collection="studentList" item="student">
+                    <if test="student.age!=null">
+                        when id = #{student.id} and name = #{student.name} then #{student.age}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="gender =case" suffix="end,">
+                <foreach collection="studentList" item="student">
+                    <if test="student.gender!=null">
+                        when id = #{student.id} and name = #{student.name} then #{student.gender}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="grade =case" suffix="end,">
+                <foreach collection="studentList" item="student">
+                    <if test="student.grade!=null">
+                        when id = #{student.id} and name = #{student.name} then #{student.grade}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        <where>
+            <foreach collection="studentList" separator="or" item="student">
+                id = #{student.id} and name = #{student.name}
+            </foreach>
+        </where>
+    </update>
+</mapper>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.hello.mapper.StockDetailsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.test.hello.pojo.dao.StockDetailsInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="stock_name" jdbcType="VARCHAR" property="stockName" />
+    <result column="stock_code" jdbcType="VARCHAR" property="stockCode" />
+    <result column="current_price" jdbcType="VARCHAR" property="currentPrice" />
+    <result column="yesterday_price" jdbcType="VARCHAR" property="yesterdayPrice" />
+    <result column="opening_price_today" jdbcType="VARCHAR" property="openingPriceToday" />
+    <result column="volume" jdbcType="VARCHAR" property="volume" />
+    <result column="inner_disk" jdbcType="VARCHAR" property="innerDisk" />
+    <result column="outer_disk" jdbcType="VARCHAR" property="outerDisk" />
+    <result column="quote_change" jdbcType="VARCHAR" property="quoteChange" />
+    <result column="highest_price_today" jdbcType="VARCHAR" property="highestPriceToday" />
+    <result column="lowest_price_today" jdbcType="VARCHAR" property="lowestPriceToday" />
+    <result column="turnover_rate" jdbcType="VARCHAR" property="turnoverRate" />
+    <result column="pe_ratio_ttm" jdbcType="VARCHAR" property="peRatioTtm" />
+    <result column="vibration_amplitude" jdbcType="VARCHAR" property="vibrationAmplitude" />
+    <result column="total_market_capitalization" jdbcType="VARCHAR" property="totalMarketCapitalization" />
+    <result column="pe_ratio_dynamic" jdbcType="VARCHAR" property="peRatioDynamic" />
+    <result column="pe_ratio_static" jdbcType="VARCHAR" property="peRatioStatic" />
+    <result column="opening_date" jdbcType="DATE" property="openingDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stock_name, stock_code, current_price, yesterday_price, opening_price_today, 
+    volume, inner_disk, outer_disk, quote_change, highest_price_today, lowest_price_today, 
+    turnover_rate, pe_ratio_ttm, vibration_amplitude, total_market_capitalization, pe_ratio_dynamic, 
+    pe_ratio_static, opening_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stock_details_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from stock_details_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.test.hello.pojo.dao.StockDetailsInfo" useGeneratedKeys="true">
+    insert into stock_details_info (stock_name, stock_code, current_price, 
+      yesterday_price, opening_price_today, volume, 
+      inner_disk, outer_disk, quote_change, 
+      highest_price_today, lowest_price_today, turnover_rate, 
+      pe_ratio_ttm, vibration_amplitude, total_market_capitalization, 
+      pe_ratio_dynamic, pe_ratio_static, opening_date
+      )
+    values (#{stockName,jdbcType=VARCHAR}, #{stockCode,jdbcType=VARCHAR}, #{currentPrice,jdbcType=VARCHAR}, 
+      #{yesterdayPrice,jdbcType=VARCHAR}, #{openingPriceToday,jdbcType=VARCHAR}, #{volume,jdbcType=VARCHAR}, 
+      #{innerDisk,jdbcType=VARCHAR}, #{outerDisk,jdbcType=VARCHAR}, #{quoteChange,jdbcType=VARCHAR}, 
+      #{highestPriceToday,jdbcType=VARCHAR}, #{lowestPriceToday,jdbcType=VARCHAR}, #{turnoverRate,jdbcType=VARCHAR}, 
+      #{peRatioTtm,jdbcType=VARCHAR}, #{vibrationAmplitude,jdbcType=VARCHAR}, #{totalMarketCapitalization,jdbcType=VARCHAR}, 
+      #{peRatioDynamic,jdbcType=VARCHAR}, #{peRatioStatic,jdbcType=VARCHAR}, #{openingDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.test.hello.pojo.dao.StockDetailsInfo" useGeneratedKeys="true">
+    insert into stock_details_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stockName != null">
+        stock_name,
+      </if>
+      <if test="stockCode != null">
+        stock_code,
+      </if>
+      <if test="currentPrice != null">
+        current_price,
+      </if>
+      <if test="yesterdayPrice != null">
+        yesterday_price,
+      </if>
+      <if test="openingPriceToday != null">
+        opening_price_today,
+      </if>
+      <if test="volume != null">
+        volume,
+      </if>
+      <if test="innerDisk != null">
+        inner_disk,
+      </if>
+      <if test="outerDisk != null">
+        outer_disk,
+      </if>
+      <if test="quoteChange != null">
+        quote_change,
+      </if>
+      <if test="highestPriceToday != null">
+        highest_price_today,
+      </if>
+      <if test="lowestPriceToday != null">
+        lowest_price_today,
+      </if>
+      <if test="turnoverRate != null">
+        turnover_rate,
+      </if>
+      <if test="peRatioTtm != null">
+        pe_ratio_ttm,
+      </if>
+      <if test="vibrationAmplitude != null">
+        vibration_amplitude,
+      </if>
+      <if test="totalMarketCapitalization != null">
+        total_market_capitalization,
+      </if>
+      <if test="peRatioDynamic != null">
+        pe_ratio_dynamic,
+      </if>
+      <if test="peRatioStatic != null">
+        pe_ratio_static,
+      </if>
+      <if test="openingDate != null">
+        opening_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stockName != null">
+        #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null">
+        #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPrice != null">
+        #{currentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="yesterdayPrice != null">
+        #{yesterdayPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="openingPriceToday != null">
+        #{openingPriceToday,jdbcType=VARCHAR},
+      </if>
+      <if test="volume != null">
+        #{volume,jdbcType=VARCHAR},
+      </if>
+      <if test="innerDisk != null">
+        #{innerDisk,jdbcType=VARCHAR},
+      </if>
+      <if test="outerDisk != null">
+        #{outerDisk,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteChange != null">
+        #{quoteChange,jdbcType=VARCHAR},
+      </if>
+      <if test="highestPriceToday != null">
+        #{highestPriceToday,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestPriceToday != null">
+        #{lowestPriceToday,jdbcType=VARCHAR},
+      </if>
+      <if test="turnoverRate != null">
+        #{turnoverRate,jdbcType=VARCHAR},
+      </if>
+      <if test="peRatioTtm != null">
+        #{peRatioTtm,jdbcType=VARCHAR},
+      </if>
+      <if test="vibrationAmplitude != null">
+        #{vibrationAmplitude,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMarketCapitalization != null">
+        #{totalMarketCapitalization,jdbcType=VARCHAR},
+      </if>
+      <if test="peRatioDynamic != null">
+        #{peRatioDynamic,jdbcType=VARCHAR},
+      </if>
+      <if test="peRatioStatic != null">
+        #{peRatioStatic,jdbcType=VARCHAR},
+      </if>
+      <if test="openingDate != null">
+        #{openingDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.test.hello.pojo.dao.StockDetailsInfo">
+    update stock_details_info
+    <set>
+      <if test="stockName != null">
+        stock_name = #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null">
+        stock_code = #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPrice != null">
+        current_price = #{currentPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="yesterdayPrice != null">
+        yesterday_price = #{yesterdayPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="openingPriceToday != null">
+        opening_price_today = #{openingPriceToday,jdbcType=VARCHAR},
+      </if>
+      <if test="volume != null">
+        volume = #{volume,jdbcType=VARCHAR},
+      </if>
+      <if test="innerDisk != null">
+        inner_disk = #{innerDisk,jdbcType=VARCHAR},
+      </if>
+      <if test="outerDisk != null">
+        outer_disk = #{outerDisk,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteChange != null">
+        quote_change = #{quoteChange,jdbcType=VARCHAR},
+      </if>
+      <if test="highestPriceToday != null">
+        highest_price_today = #{highestPriceToday,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestPriceToday != null">
+        lowest_price_today = #{lowestPriceToday,jdbcType=VARCHAR},
+      </if>
+      <if test="turnoverRate != null">
+        turnover_rate = #{turnoverRate,jdbcType=VARCHAR},
+      </if>
+      <if test="peRatioTtm != null">
+        pe_ratio_ttm = #{peRatioTtm,jdbcType=VARCHAR},
+      </if>
+      <if test="vibrationAmplitude != null">
+        vibration_amplitude = #{vibrationAmplitude,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMarketCapitalization != null">
+        total_market_capitalization = #{totalMarketCapitalization,jdbcType=VARCHAR},
+      </if>
+      <if test="peRatioDynamic != null">
+        pe_ratio_dynamic = #{peRatioDynamic,jdbcType=VARCHAR},
+      </if>
+      <if test="peRatioStatic != null">
+        pe_ratio_static = #{peRatioStatic,jdbcType=VARCHAR},
+      </if>
+      <if test="openingDate != null">
+        opening_date = #{openingDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.test.hello.pojo.dao.StockDetailsInfo">
+    update stock_details_info
+    set stock_name = #{stockName,jdbcType=VARCHAR},
+      stock_code = #{stockCode,jdbcType=VARCHAR},
+      current_price = #{currentPrice,jdbcType=VARCHAR},
+      yesterday_price = #{yesterdayPrice,jdbcType=VARCHAR},
+      opening_price_today = #{openingPriceToday,jdbcType=VARCHAR},
+      volume = #{volume,jdbcType=VARCHAR},
+      inner_disk = #{innerDisk,jdbcType=VARCHAR},
+      outer_disk = #{outerDisk,jdbcType=VARCHAR},
+      quote_change = #{quoteChange,jdbcType=VARCHAR},
+      highest_price_today = #{highestPriceToday,jdbcType=VARCHAR},
+      lowest_price_today = #{lowestPriceToday,jdbcType=VARCHAR},
+      turnover_rate = #{turnoverRate,jdbcType=VARCHAR},
+      pe_ratio_ttm = #{peRatioTtm,jdbcType=VARCHAR},
+      vibration_amplitude = #{vibrationAmplitude,jdbcType=VARCHAR},
+      total_market_capitalization = #{totalMarketCapitalization,jdbcType=VARCHAR},
+      pe_ratio_dynamic = #{peRatioDynamic,jdbcType=VARCHAR},
+      pe_ratio_static = #{peRatioStatic,jdbcType=VARCHAR},
+      opening_date = #{openingDate,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <insert id="batchSave" keyColumn="id" keyProperty="id" parameterType="List" useGeneratedKeys="true">
+    insert into stock_details_info (stock_name, stock_code, current_price,
+    yesterday_price, opening_price_today, volume,
+    inner_disk, outer_disk, quote_change,
+    highest_price_today, lowest_price_today, turnover_rate,
+    pe_ratio_ttm, vibration_amplitude, total_market_capitalization,
+    pe_ratio_dynamic, pe_ratio_static, opening_date
+    )
+    values
+    <foreach collection="stockDetailsInfoList" item="item" separator=",">
+    (
+    #{item.stockName,jdbcType=VARCHAR}, #{item.stockCode,jdbcType=VARCHAR}, #{item.currentPrice,jdbcType=VARCHAR},
+    #{item.yesterdayPrice,jdbcType=VARCHAR}, #{item.openingPriceToday,jdbcType=VARCHAR}, #{item.volume,jdbcType=VARCHAR},
+    #{item.innerDisk,jdbcType=VARCHAR}, #{item.outerDisk,jdbcType=VARCHAR}, #{item.quoteChange,jdbcType=VARCHAR},
+    #{item.highestPriceToday,jdbcType=VARCHAR}, #{item.lowestPriceToday,jdbcType=VARCHAR}, #{item.turnoverRate,jdbcType=VARCHAR},
+    #{item.peRatioTtm,jdbcType=VARCHAR}, #{item.vibrationAmplitude,jdbcType=VARCHAR}, #{item.totalMarketCapitalization,jdbcType=VARCHAR},
+    #{item.peRatioDynamic,jdbcType=VARCHAR}, #{item.peRatioStatic,jdbcType=VARCHAR}, #{item.openingDate,jdbcType=DATE}
+    )
+    </foreach>
+  </insert>
+
+  <select id="getStockDetailsInfo" parameterType="com.test.hello.pojo.dao.StockDetailsInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from stock_details_info
+    <where>
+      <if test="stockName != null and stockName != ''">
+        and stock_name = #{stockName}
+      </if>
+      <if test="openingDate != null">
+        and opening_date = #{openingDate,jdbcType=DATE}
+      </if>
+    </where>
+  </select>
+</mapper>

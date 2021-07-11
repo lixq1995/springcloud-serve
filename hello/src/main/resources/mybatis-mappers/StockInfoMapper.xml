@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里填写对应的Dao文件所在的路径 -->
+<mapper namespace="com.test.hello.mapper.StockInfoMapper">
+
+    <resultMap type="com.test.hello.pojo.dao.StockBaseInfo" id="stockBaseInfoMap">
+        <!--property实体类定义的对象名称，column数据库字段名-->
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <sql id="result">id,code,name</sql>
+
+    <!--批量新增-->
+    <insert id="batchSave">
+        INSERT INTO
+        stock_base_info
+        (code,name)
+        VALUES
+        <foreach collection="stockInfoList" item="stockInfo" separator=",">
+            (#{stockInfo.code}, #{stockInfo.name})
+        </foreach>
+    </insert>
+
+    <select id="getStockBaseInfoList" parameterType="com.test.hello.pojo.dao.StockBaseInfo" resultMap="stockBaseInfoMap">
+        SELECT
+        <include refid="result"/>
+        FROM
+        stock_base_info
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="code != null and code != ''">
+                and code = #{code}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+        </where>
+    </select>
+
+</mapper>

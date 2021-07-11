@@ -1,0 +1,512 @@
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective settings
+[WARNING] Unrecognised tag: 'profile' (position: START_TAG seen ...<!-- \u6307\u5b9amaven\u7248\u672c -->\t\n<profile>... @61:10)  @ E:\apache-maven-3.5.3\bin\..\conf\settings.xml, line 61, column 10
+[WARNING] 
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] springcloud-serve-gateway                                          [pom]
+[INFO] springcloud-serve-hello                                            [pom]
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.1.10/johnzon-maven-plugin-1.1.10.pom
+Progress (1): 0.9/3.6 kBProgress (1): 2.3/3.6 kBProgress (1): 3.6 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.1.10/johnzon-maven-plugin-1.1.10.pom (3.6 kB at 3.6 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon/1.1.10/johnzon-1.1.10.pom
+Progress (1): 0.9/25 kBProgress (1): 2.3/25 kBProgress (1): 3.7/25 kBProgress (1): 5.1/25 kBProgress (1): 6.5/25 kBProgress (1): 7.9/25 kBProgress (1): 9.3/25 kBProgress (1): 11/25 kB Progress (1): 12/25 kBProgress (1): 14/25 kBProgress (1): 15/25 kBProgress (1): 16/25 kBProgress (1): 18/25 kBProgress (1): 19/25 kBProgress (1): 21/25 kBProgress (1): 22/25 kBProgress (1): 23/25 kBProgress (1): 25 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon/1.1.10/johnzon-1.1.10.pom (25 kB at 50 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.1.10/johnzon-maven-plugin-1.1.10.jar
+Progress (1): 0.9/26 kBProgress (1): 2.3/26 kBProgress (1): 3.7/26 kBProgress (1): 5.1/26 kBProgress (1): 6.5/26 kBProgress (1): 7.9/26 kBProgress (1): 9.3/26 kBProgress (1): 11/26 kB Progress (1): 12/26 kBProgress (1): 14/26 kBProgress (1): 15/26 kBProgress (1): 16/26 kBProgress (1): 18/26 kBProgress (1): 19/26 kBProgress (1): 21/26 kBProgress (1): 22/26 kBProgress (1): 23/26 kBProgress (1): 25/26 kBProgress (1): 26 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/johnzon/johnzon-maven-plugin/1.1.10/johnzon-maven-plugin-1.1.10.jar (26 kB at 78 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.2.71/kotlin-maven-plugin-1.2.71.pom
+Progress (1): 0.9/6.1 kBProgress (1): 2.3/6.1 kBProgress (1): 3.7/6.1 kBProgress (1): 5.1/6.1 kBProgress (1): 6.1 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.2.71/kotlin-maven-plugin-1.2.71.pom (6.1 kB at 18 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-project/1.2.71/kotlin-project-1.2.71.pom
+Progress (1): 0.9/10 kBProgress (1): 2.3/10 kBProgress (1): 3.7/10 kBProgress (1): 5.1/10 kBProgress (1): 6.5/10 kBProgress (1): 7.9/10 kBProgress (1): 9.3/10 kBProgress (1): 10 kB                       Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-project/1.2.71/kotlin-project-1.2.71.pom (10 kB at 26 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.2.71/kotlin-maven-plugin-1.2.71.jar
+Progress (1): 0.9/79 kBProgress (1): 2.3/79 kBProgress (1): 3.7/79 kBProgress (1): 5.1/79 kBProgress (1): 6.5/79 kBProgress (1): 7.9/79 kBProgress (1): 9.3/79 kBProgress (1): 11/79 kB Progress (1): 12/79 kBProgress (1): 14/79 kBProgress (1): 15/79 kBProgress (1): 16/79 kBProgress (1): 18/79 kBProgress (1): 19/79 kBProgress (1): 21/79 kBProgress (1): 22/79 kBProgress (1): 23/79 kBProgress (1): 25/79 kBProgress (1): 26/79 kBProgress (1): 28/79 kBProgress (1): 29/79 kBProgress (1): 30/79 kBProgress (1): 32/79 kBProgress (1): 33/79 kBProgress (1): 35/79 kBProgress (1): 36/79 kBProgress (1): 37/79 kBProgress (1): 39/79 kBProgress (1): 40/79 kBProgress (1): 42/79 kBProgress (1): 43/79 kBProgress (1): 44/79 kBProgress (1): 46/79 kBProgress (1): 47/79 kBProgress (1): 49/79 kBProgress (1): 50/79 kBProgress (1): 51/79 kBProgress (1): 53/79 kBProgress (1): 54/79 kBProgress (1): 56/79 kBProgress (1): 57/79 kBProgress (1): 58/79 kBProgress (1): 60/79 kBProgress (1): 61/79 kBProgress (1): 63/79 kBProgress (1): 64/79 kBProgress (1): 65/79 kBProgress (1): 67/79 kBProgress (1): 68/79 kBProgress (1): 70/79 kBProgress (1): 71/79 kBProgress (1): 72/79 kBProgress (1): 74/79 kBProgress (1): 75/79 kBProgress (1): 77/79 kBProgress (1): 78/79 kBProgress (1): 79 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jetbrains/kotlin/kotlin-maven-plugin/1.2.71/kotlin-maven-plugin-1.2.71.jar (79 kB at 183 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.11.5/jooq-codegen-maven-3.11.5.pom
+Progress (1): 0.9/3.5 kBProgress (1): 2.3/3.5 kBProgress (1): 3.5 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.11.5/jooq-codegen-maven-3.11.5.pom (3.5 kB at 6.5 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-parent/3.11.5/jooq-parent-3.11.5.pom
+Progress (1): 0.9/11 kBProgress (1): 2.3/11 kBProgress (1): 3.7/11 kBProgress (1): 5.1/11 kBProgress (1): 6.5/11 kBProgress (1): 7.9/11 kBProgress (1): 9.3/11 kBProgress (1): 11/11 kB Progress (1): 11 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-parent/3.11.5/jooq-parent-3.11.5.pom (11 kB at 23 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.11.5/jooq-codegen-maven-3.11.5.jar
+Progress (1): 0.9/16 kBProgress (1): 2.3/16 kBProgress (1): 3.7/16 kBProgress (1): 5.1/16 kBProgress (1): 6.5/16 kBProgress (1): 7.9/16 kBProgress (1): 9.3/16 kBProgress (1): 11/16 kB Progress (1): 12/16 kBProgress (1): 14/16 kBProgress (1): 15/16 kBProgress (1): 16 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/jooq/jooq-codegen-maven/3.11.5/jooq-codegen-maven-3.11.5.jar (16 kB at 42 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-antrun-plugin/1.8/maven-antrun-plugin-1.8.pom
+Progress (1): 0.9/3.3 kBProgress (1): 2.3/3.3 kBProgress (1): 3.3 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-antrun-plugin/1.8/maven-antrun-plugin-1.8.pom (3.3 kB at 9.7 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-antrun-plugin/1.8/maven-antrun-plugin-1.8.jar
+Progress (1): 0.9/36 kBProgress (1): 2.3/36 kBProgress (1): 3.7/36 kBProgress (1): 5.1/36 kBProgress (1): 6.5/36 kBProgress (1): 7.9/36 kBProgress (1): 9.3/36 kBProgress (1): 11/36 kB Progress (1): 12/36 kBProgress (1): 14/36 kBProgress (1): 15/36 kBProgress (1): 16/36 kBProgress (1): 18/36 kBProgress (1): 19/36 kBProgress (1): 21/36 kBProgress (1): 22/36 kBProgress (1): 23/36 kBProgress (1): 25/36 kBProgress (1): 26/36 kBProgress (1): 28/36 kBProgress (1): 29/36 kBProgress (1): 30/36 kBProgress (1): 32/36 kBProgress (1): 33/36 kBProgress (1): 35/36 kBProgress (1): 36/36 kBProgress (1): 36 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-antrun-plugin/1.8/maven-antrun-plugin-1.8.jar (36 kB at 110 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-assembly-plugin/3.1.0/maven-assembly-plugin-3.1.0.pom
+Progress (1): 0.9/16 kBProgress (1): 2.3/16 kBProgress (1): 3.7/16 kBProgress (1): 5.1/16 kBProgress (1): 6.5/16 kBProgress (1): 7.9/16 kBProgress (1): 9.3/16 kBProgress (1): 11/16 kB Progress (1): 12/16 kBProgress (1): 14/16 kBProgress (1): 15/16 kBProgress (1): 16 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-assembly-plugin/3.1.0/maven-assembly-plugin-3.1.0.pom (16 kB at 43 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-assembly-plugin/3.1.0/maven-assembly-plugin-3.1.0.jar
+Progress (1): 0.9/241 kBProgress (1): 2.3/241 kBProgress (1): 3.7/241 kBProgress (1): 5.1/241 kBProgress (1): 6.5/241 kBProgress (1): 7.9/241 kBProgress (1): 9.3/241 kBProgress (1): 11/241 kB Progress (1): 12/241 kBProgress (1): 14/241 kBProgress (1): 15/241 kBProgress (1): 16/241 kBProgress (1): 18/241 kBProgress (1): 19/241 kBProgress (1): 21/241 kBProgress (1): 22/241 kBProgress (1): 23/241 kBProgress (1): 25/241 kBProgress (1): 26/241 kBProgress (1): 28/241 kBProgress (1): 29/241 kBProgress (1): 30/241 kBProgress (1): 32/241 kBProgress (1): 33/241 kBProgress (1): 35/241 kBProgress (1): 36/241 kBProgress (1): 37/241 kBProgress (1): 39/241 kBProgress (1): 40/241 kBProgress (1): 42/241 kBProgress (1): 43/241 kBProgress (1): 44/241 kBProgress (1): 46/241 kBProgress (1): 47/241 kBProgress (1): 49/241 kBProgress (1): 50/241 kBProgress (1): 51/241 kBProgress (1): 53/241 kBProgress (1): 54/241 kBProgress (1): 56/241 kBProgress (1): 57/241 kBProgress (1): 58/241 kBProgress (1): 60/241 kBProgress (1): 61/241 kBProgress (1): 63/241 kBProgress (1): 64/241 kBProgress (1): 65/241 kBProgress (1): 67/241 kBProgress (1): 68/241 kBProgress (1): 70/241 kBProgress (1): 71/241 kBProgress (1): 72/241 kBProgress (1): 74/241 kBProgress (1): 75/241 kBProgress (1): 77/241 kBProgress (1): 78/241 kBProgress (1): 79/241 kBProgress (1): 81/241 kBProgress (1): 82/241 kBProgress (1): 84/241 kBProgress (1): 85/241 kBProgress (1): 86/241 kBProgress (1): 88/241 kBProgress (1): 89/241 kBProgress (1): 91/241 kBProgress (1): 92/241 kBProgress (1): 93/241 kBProgress (1): 95/241 kBProgress (1): 96/241 kBProgress (1): 98/241 kBProgress (1): 99/241 kBProgress (1): 100/241 kBProgress (1): 102/241 kBProgress (1): 103/241 kBProgress (1): 105/241 kBProgress (1): 106/241 kBProgress (1): 107/241 kBProgress (1): 109/241 kBProgress (1): 110/241 kBProgress (1): 112/241 kBProgress (1): 113/241 kBProgress (1): 114/241 kBProgress (1): 116/241 kBProgress (1): 117/241 kBProgress (1): 119/241 kBProgress (1): 120/241 kBProgress (1): 121/241 kBProgress (1): 123/241 kBProgress (1): 124/241 kBProgress (1): 126/241 kBProgress (1): 127/241 kBProgress (1): 128/241 kBProgress (1): 130/241 kBProgress (1): 131/241 kBProgress (1): 133/241 kBProgress (1): 134/241 kBProgress (1): 135/241 kBProgress (1): 137/241 kBProgress (1): 138/241 kBProgress (1): 140/241 kBProgress (1): 141/241 kBProgress (1): 142/241 kBProgress (1): 144/241 kBProgress (1): 145/241 kBProgress (1): 147/241 kBProgress (1): 148/241 kBProgress (1): 149/241 kBProgress (1): 151/241 kBProgress (1): 152/241 kBProgress (1): 154/241 kBProgress (1): 155/241 kBProgress (1): 156/241 kBProgress (1): 158/241 kBProgress (1): 159/241 kBProgress (1): 161/241 kBProgress (1): 162/241 kBProgress (1): 163/241 kBProgress (1): 165/241 kBProgress (1): 166/241 kBProgress (1): 168/241 kBProgress (1): 169/241 kBProgress (1): 170/241 kBProgress (1): 172/241 kBProgress (1): 173/241 kBProgress (1): 175/241 kBProgress (1): 176/241 kBProgress (1): 177/241 kBProgress (1): 179/241 kBProgress (1): 180/241 kBProgress (1): 182/241 kBProgress (1): 183/241 kBProgress (1): 184/241 kBProgress (1): 186/241 kBProgress (1): 187/241 kBProgress (1): 189/241 kBProgress (1): 190/241 kBProgress (1): 191/241 kBProgress (1): 193/241 kBProgress (1): 194/241 kBProgress (1): 196/241 kBProgress (1): 197/241 kBProgress (1): 198/241 kBProgress (1): 200/241 kBProgress (1): 201/241 kBProgress (1): 203/241 kBProgress (1): 204/241 kBProgress (1): 205/241 kBProgress (1): 207/241 kBProgress (1): 208/241 kBProgress (1): 210/241 kBProgress (1): 211/241 kBProgress (1): 212/241 kBProgress (1): 214/241 kBProgress (1): 215/241 kBProgress (1): 217/241 kBProgress (1): 218/241 kBProgress (1): 219/241 kBProgress (1): 221/241 kBProgress (1): 222/241 kBProgress (1): 224/241 kBProgress (1): 225/241 kBProgress (1): 226/241 kBProgress (1): 228/241 kBProgress (1): 229/241 kBProgress (1): 231/241 kBProgress (1): 232/241 kBProgress (1): 233/241 kBProgress (1): 235/241 kBProgress (1): 236/241 kBProgress (1): 238/241 kBProgress (1): 239/241 kBProgress (1): 240/241 kBProgress (1): 241 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-assembly-plugin/3.1.0/maven-assembly-plugin-3.1.0.jar (241 kB at 538 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.pom
+Progress (1): 0.9/15 kBProgress (1): 2.3/15 kBProgress (1): 3.7/15 kBProgress (1): 5.1/15 kBProgress (1): 6.5/15 kBProgress (1): 7.9/15 kBProgress (1): 9.3/15 kBProgress (1): 11/15 kB Progress (1): 12/15 kBProgress (1): 14/15 kBProgress (1): 15 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.pom (15 kB at 43 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.jar
+Progress (1): 0.9/167 kBProgress (1): 2.3/167 kBProgress (1): 3.7/167 kBProgress (1): 5.1/167 kBProgress (1): 6.5/167 kBProgress (1): 7.9/167 kBProgress (1): 9.3/167 kBProgress (1): 11/167 kB Progress (1): 12/167 kBProgress (1): 14/167 kBProgress (1): 15/167 kBProgress (1): 16/167 kBProgress (1): 18/167 kBProgress (1): 19/167 kBProgress (1): 21/167 kBProgress (1): 22/167 kBProgress (1): 23/167 kBProgress (1): 25/167 kBProgress (1): 26/167 kBProgress (1): 28/167 kBProgress (1): 29/167 kBProgress (1): 30/167 kBProgress (1): 32/167 kBProgress (1): 33/167 kBProgress (1): 35/167 kBProgress (1): 36/167 kBProgress (1): 37/167 kBProgress (1): 39/167 kBProgress (1): 40/167 kBProgress (1): 42/167 kBProgress (1): 43/167 kBProgress (1): 44/167 kBProgress (1): 46/167 kBProgress (1): 47/167 kBProgress (1): 49/167 kBProgress (1): 50/167 kBProgress (1): 51/167 kBProgress (1): 53/167 kBProgress (1): 54/167 kBProgress (1): 56/167 kBProgress (1): 57/167 kBProgress (1): 58/167 kBProgress (1): 60/167 kBProgress (1): 61/167 kBProgress (1): 63/167 kBProgress (1): 64/167 kBProgress (1): 65/167 kBProgress (1): 67/167 kBProgress (1): 68/167 kBProgress (1): 70/167 kBProgress (1): 71/167 kBProgress (1): 72/167 kBProgress (1): 74/167 kBProgress (1): 75/167 kBProgress (1): 77/167 kBProgress (1): 78/167 kBProgress (1): 79/167 kBProgress (1): 81/167 kBProgress (1): 82/167 kBProgress (1): 84/167 kBProgress (1): 85/167 kBProgress (1): 86/167 kBProgress (1): 88/167 kBProgress (1): 89/167 kBProgress (1): 91/167 kBProgress (1): 92/167 kBProgress (1): 93/167 kBProgress (1): 95/167 kBProgress (1): 96/167 kBProgress (1): 98/167 kBProgress (1): 99/167 kBProgress (1): 100/167 kBProgress (1): 102/167 kBProgress (1): 103/167 kBProgress (1): 105/167 kBProgress (1): 106/167 kBProgress (1): 107/167 kBProgress (1): 109/167 kBProgress (1): 110/167 kBProgress (1): 112/167 kBProgress (1): 113/167 kBProgress (1): 114/167 kBProgress (1): 116/167 kBProgress (1): 117/167 kBProgress (1): 119/167 kBProgress (1): 120/167 kBProgress (1): 121/167 kBProgress (1): 123/167 kBProgress (1): 124/167 kBProgress (1): 126/167 kBProgress (1): 127/167 kBProgress (1): 128/167 kBProgress (1): 130/167 kBProgress (1): 131/167 kBProgress (1): 133/167 kBProgress (1): 134/167 kBProgress (1): 135/167 kBProgress (1): 137/167 kBProgress (1): 138/167 kBProgress (1): 140/167 kBProgress (1): 141/167 kBProgress (1): 142/167 kBProgress (1): 144/167 kBProgress (1): 145/167 kBProgress (1): 147/167 kBProgress (1): 148/167 kBProgress (1): 149/167 kBProgress (1): 151/167 kBProgress (1): 152/167 kBProgress (1): 154/167 kBProgress (1): 155/167 kBProgress (1): 156/167 kBProgress (1): 158/167 kBProgress (1): 159/167 kBProgress (1): 161/167 kBProgress (1): 162/167 kBProgress (1): 163/167 kBProgress (1): 165/167 kBProgress (1): 166/167 kBProgress (1): 167 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-dependency-plugin/3.1.1/maven-dependency-plugin-3.1.1.jar (167 kB at 463 kB/s)
+[INFO] 
+[INFO] -----------< com.test.springcloud:springcloud-serve-gateway >-----------
+[INFO] Building springcloud-serve-gateway 1.0-SNAPSHOT                    [1/2]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ springcloud-serve-gateway ---
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.pom
+Progress (1): 0.9/6.7 kBProgress (1): 2.3/6.7 kBProgress (1): 3.7/6.7 kBProgress (1): 5.1/6.7 kBProgress (1): 6.5/6.7 kBProgress (1): 6.7 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.pom (6.7 kB at 19 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/ow2/asm/asm/6.1.1/asm-6.1.1.pom
+Progress (1): 0.9/2.9 kBProgress (1): 2.3/2.9 kBProgress (1): 2.9 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/ow2/asm/asm/6.1.1/asm-6.1.1.pom (2.9 kB at 8.3 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.pom
+Progress (1): 0.9/7.6 kBProgress (1): 2.3/7.6 kBProgress (1): 3.7/7.6 kBProgress (1): 5.1/7.6 kBProgress (1): 6.5/7.6 kBProgress (1): 7.6 kB                        Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.pom (7.6 kB at 23 kB/s)
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/commons/commons-compress/1.16.1/commons-compress-1.16.1.jar
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.jar
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/ow2/asm/asm/6.1.1/asm-6.1.1.jar
+Downloading from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.jar
+Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/commons/commons-compress/1.16.1/commons-compress-1.16.1.jar (0 B at 0 B/s)
+Progress (1): 0.9/35 kBProgress (1): 2.3/35 kBProgress (1): 3.7/35 kBProgress (1): 5.1/35 kBProgress (1): 6.5/35 kBProgress (1): 7.9/35 kBProgress (1): 9.3/35 kBProgress (1): 11/35 kB Progress (1): 12/35 kBProgress (1): 14/35 kBProgress (1): 15/35 kBProgress (1): 16/35 kBProgress (1): 18/35 kBProgress (1): 19/35 kBProgress (1): 21/35 kBProgress (1): 22/35 kBProgress (1): 23/35 kBProgress (1): 25/35 kBProgress (1): 26/35 kBProgress (1): 28/35 kBProgress (1): 29/35 kBProgress (1): 30/35 kBProgress (1): 32/35 kBProgress (1): 33/35 kBProgress (1): 35/35 kBProgress (1): 35 kB                      Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-dependency-analyzer/1.10/maven-dependency-analyzer-1.10.jar (35 kB at 64 kB/s)
+Progress (1): 0.9/123 kBProgress (1): 2.3/123 kBProgress (1): 3.7/123 kBProgress (1): 5.1/123 kBProgress (1): 6.5/123 kBProgress (1): 7.9/123 kBProgress (1): 9.3/123 kBProgress (1): 11/123 kB Progress (1): 12/123 kBProgress (1): 14/123 kBProgress (1): 15/123 kBProgress (1): 16/123 kBProgress (1): 18/123 kBProgress (1): 19/123 kBProgress (1): 21/123 kBProgress (1): 22/123 kBProgress (1): 23/123 kBProgress (1): 25/123 kBProgress (1): 26/123 kBProgress (1): 28/123 kBProgress (1): 29/123 kBProgress (1): 30/123 kBProgress (1): 32/123 kBProgress (1): 33/123 kBProgress (1): 35/123 kBProgress (1): 36/123 kBProgress (1): 37/123 kBProgress (1): 39/123 kBProgress (2): 39/123 kB | 0.9/108 kBProgress (2): 39/123 kB | 2.3/108 kBProgress (2): 39/123 kB | 3.7/108 kBProgress (2): 39/123 kB | 5.1/108 kBProgress (2): 39/123 kB | 6.5/108 kBProgress (2): 39/123 kB | 7.9/108 kBProgress (2): 39/123 kB | 9.3/108 kBProgress (2): 39/123 kB | 11/108 kB Progress (2): 40/123 kB | 11/108 kBProgress (2): 42/123 kB | 11/108 kBProgress (2): 43/123 kB | 11/108 kBProgress (2): 44/123 kB | 11/108 kBProgress (2): 46/123 kB | 11/108 kBProgress (2): 47/123 kB | 11/108 kBProgress (2): 49/123 kB | 11/108 kBProgress (2): 50/123 kB | 11/108 kBProgress (2): 51/123 kB | 11/108 kBProgress (2): 53/123 kB | 11/108 kBProgress (2): 54/123 kB | 11/108 kBProgress (2): 56/123 kB | 11/108 kBProgress (2): 57/123 kB | 11/108 kBProgress (2): 58/123 kB | 11/108 kBProgress (2): 60/123 kB | 11/108 kBProgress (2): 61/123 kB | 11/108 kBProgress (2): 63/123 kB | 11/108 kBProgress (2): 64/123 kB | 11/108 kBProgress (2): 65/123 kB | 11/108 kBProgress (2): 67/123 kB | 11/108 kBProgress (2): 68/123 kB | 11/108 kBProgress (2): 70/123 kB | 11/108 kBProgress (2): 71/123 kB | 11/108 kBProgress (2): 72/123 kB | 11/108 kBProgress (2): 74/123 kB | 11/108 kBProgress (2): 75/123 kB | 11/108 kBProgress (2): 77/123 kB | 11/108 kBProgress (2): 78/123 kB | 11/108 kBProgress (2): 79/123 kB | 11/108 kBProgress (2): 81/123 kB | 11/108 kBProgress (2): 82/123 kB | 11/108 kBProgress (2): 84/123 kB | 11/108 kBProgress (2): 85/123 kB | 11/108 kBProgress (2): 86/123 kB | 11/108 kBProgress (2): 88/123 kB | 11/108 kBProgress (2): 89/123 kB | 11/108 kBProgress (2): 91/123 kB | 11/108 kBProgress (2): 92/123 kB | 11/108 kBProgress (2): 93/123 kB | 11/108 kBProgress (2): 95/123 kB | 11/108 kBProgress (2): 95/123 kB | 12/108 kBProgress (2): 95/123 kB | 14/108 kBProgress (2): 95/123 kB | 15/108 kBProgress (2): 95/123 kB | 16/108 kBProgress (2): 95/123 kB | 18/108 kBProgress (2): 95/123 kB | 19/108 kBProgress (2): 95/123 kB | 21/108 kBProgress (2): 95/123 kB | 22/108 kBProgress (2): 95/123 kB | 23/108 kBProgress (2): 95/123 kB | 25/108 kBProgress (2): 95/123 kB | 26/108 kBProgress (2): 95/123 kB | 28/108 kBProgress (2): 95/123 kB | 29/108 kBProgress (2): 95/123 kB | 30/108 kBProgress (2): 95/123 kB | 32/108 kBProgress (2): 95/123 kB | 33/108 kBProgress (2): 95/123 kB | 35/108 kBProgress (2): 95/123 kB | 36/108 kBProgress (2): 95/123 kB | 37/108 kBProgress (2): 95/123 kB | 39/108 kBProgress (2): 96/123 kB | 39/108 kBProgress (2): 98/123 kB | 39/108 kBProgress (2): 99/123 kB | 39/108 kBProgress (2): 100/123 kB | 39/108 kBProgress (2): 102/123 kB | 39/108 kBProgress (2): 103/123 kB | 39/108 kBProgress (2): 105/123 kB | 39/108 kBProgress (2): 106/123 kB | 39/108 kBProgress (2): 107/123 kB | 39/108 kBProgress (2): 109/123 kB | 39/108 kBProgress (2): 110/123 kB | 39/108 kBProgress (2): 112/123 kB | 39/108 kBProgress (2): 113/123 kB | 39/108 kBProgress (2): 114/123 kB | 39/108 kBProgress (2): 116/123 kB | 39/108 kBProgress (2): 117/123 kB | 39/108 kBProgress (2): 119/123 kB | 39/108 kBProgress (2): 120/123 kB | 39/108 kBProgress (2): 121/123 kB | 39/108 kBProgress (2): 123/123 kB | 39/108 kBProgress (2): 123 kB | 39/108 kB    Progress (2): 123 kB | 40/108 kBProgress (2): 123 kB | 42/108 kBProgress (2): 123 kB | 43/108 kBProgress (2): 123 kB | 44/108 kBProgress (2): 123 kB | 46/108 kBProgress (2): 123 kB | 47/108 kBProgress (2): 123 kB | 49/108 kBProgress (2): 123 kB | 50/108 kBProgress (2): 123 kB | 51/108 kBProgress (2): 123 kB | 53/108 kBProgress (2): 123 kB | 54/108 kBProgress (2): 123 kB | 56/108 kBProgress (2): 123 kB | 57/108 kBProgress (2): 123 kB | 58/108 kBProgress (2): 123 kB | 60/108 kBProgress (2): 123 kB | 61/108 kBProgress (2): 123 kB | 63/108 kBProgress (2): 123 kB | 64/108 kBProgress (2): 123 kB | 65/108 kBProgress (2): 123 kB | 67/108 kBProgress (2): 123 kB | 68/108 kBProgress (2): 123 kB | 70/108 kBProgress (2): 123 kB | 71/108 kBProgress (2): 123 kB | 72/108 kBProgress (2): 123 kB | 74/108 kBProgress (2): 123 kB | 75/108 kBProgress (2): 123 kB | 77/108 kBProgress (2): 123 kB | 78/108 kBProgress (2): 123 kB | 79/108 kBProgress (2): 123 kB | 81/108 kBProgress (2): 123 kB | 82/108 kBProgress (2): 123 kB | 84/108 kBProgress (2): 123 kB | 85/108 kBProgress (2): 123 kB | 86/108 kBProgress (2): 123 kB | 88/108 kBProgress (2): 123 kB | 89/108 kBProgress (2): 123 kB | 91/108 kBProgress (2): 123 kB | 92/108 kBProgress (2): 123 kB | 93/108 kBProgress (2): 123 kB | 95/108 kBProgress (2): 123 kB | 96/108 kBProgress (2): 123 kB | 98/108 kBProgress (2): 123 kB | 99/108 kBProgress (2): 123 kB | 100/108 kBProgress (2): 123 kB | 102/108 kBProgress (2): 123 kB | 103/108 kBProgress (2): 123 kB | 105/108 kBProgress (2): 123 kB | 106/108 kBProgress (2): 123 kB | 107/108 kBProgress (2): 123 kB | 108 kB                                 Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.jar (123 kB at 141 kB/s)
+Downloaded from alipmaven: http://maven.aliyun.com/nexus/content/groups/public/org/ow2/asm/asm/6.1.1/asm-6.1.1.jar (108 kB at 118 kB/s)
+[INFO] Verbose not supported since maven-dependency-plugin 3.0
+[INFO] com.test.springcloud:springcloud-serve-gateway:pom:1.0-SNAPSHOT
+[INFO] +- org.springframework.cloud:spring-cloud-starter-gateway:jar:2.1.0.RELEASE:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-starter:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-context:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  \- org.springframework.security:spring-security-crypto:jar:5.1.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-commons:jar:2.1.0.RELEASE:compile
+[INFO] |  |  \- org.springframework.security:spring-security-rsa:jar:1.0.7.RELEASE:compile
+[INFO] |  |     \- org.bouncycastle:bcpkix-jdk15on:jar:1.60:compile
+[INFO] |  |        \- org.bouncycastle:bcprov-jdk15on:jar:1.60:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-gateway-core:jar:2.1.0.RELEASE:compile
+[INFO] |  |  \- io.projectreactor.addons:reactor-extra:jar:3.2.0.RELEASE:compile
+[INFO] |  |     \- io.projectreactor:reactor-core:jar:3.2.2.RELEASE:compile
+[INFO] |  |        \- org.reactivestreams:reactive-streams:jar:1.0.2:compile
+[INFO] |  \- org.springframework.boot:spring-boot-starter-webflux:jar:2.1.0.RELEASE:compile
+[INFO] |     +- org.springframework.boot:spring-boot-starter-json:jar:2.1.0.RELEASE:compile
+[INFO] |     |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.7:compile
+[INFO] |     |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.7:compile
+[INFO] |     +- org.springframework.boot:spring-boot-starter-reactor-netty:jar:2.1.0.RELEASE:compile
+[INFO] |     |  \- io.projectreactor.netty:reactor-netty:jar:0.8.2.RELEASE:compile
+[INFO] |     |     +- io.netty:netty-codec-http:jar:4.1.29.Final:compile
+[INFO] |     |     |  \- io.netty:netty-codec:jar:4.1.29.Final:compile
+[INFO] |     |     +- io.netty:netty-codec-http2:jar:4.1.29.Final:compile
+[INFO] |     |     +- io.netty:netty-handler:jar:4.1.29.Final:compile
+[INFO] |     |     |  +- io.netty:netty-buffer:jar:4.1.29.Final:compile
+[INFO] |     |     |  \- io.netty:netty-transport:jar:4.1.29.Final:compile
+[INFO] |     |     |     \- io.netty:netty-resolver:jar:4.1.29.Final:compile
+[INFO] |     |     +- io.netty:netty-handler-proxy:jar:4.1.29.Final:compile
+[INFO] |     |     |  \- io.netty:netty-codec-socks:jar:4.1.29.Final:compile
+[INFO] |     |     \- io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.29.Final:compile
+[INFO] |     |        +- io.netty:netty-common:jar:4.1.29.Final:compile
+[INFO] |     |        \- io.netty:netty-transport-native-unix-common:jar:4.1.29.Final:compile
+[INFO] |     +- org.hibernate.validator:hibernate-validator:jar:6.0.13.Final:compile
+[INFO] |     |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO] |     |  +- org.jboss.logging:jboss-logging:jar:3.3.2.Final:compile
+[INFO] |     |  \- com.fasterxml:classmate:jar:1.4.0:compile
+[INFO] |     +- org.springframework:spring-web:jar:5.1.2.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-beans:jar:5.1.2.RELEASE:compile
+[INFO] |     +- org.springframework:spring-webflux:jar:5.1.2.RELEASE:compile
+[INFO] |     \- org.synchronoss.cloud:nio-multipart-parser:jar:1.1.0:compile
+[INFO] |        +- org.slf4j:slf4j-api:jar:1.7.25:compile
+[INFO] |        \- org.synchronoss.cloud:nio-stream-storage:jar:1.1.3:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:2.1.0.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.3:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.3:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.1:compile
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.11.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.25:compile
+[INFO] |  |  +- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:5.1.2.RELEASE:compile
+[INFO] |  |  |  \- org.springframework:spring-jcl:jar:5.1.2.RELEASE:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.23:runtime
+[INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-actuator:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.9.7:compile
+[INFO] |  |  +- org.springframework:spring-context:jar:5.1.2.RELEASE:compile
+[INFO] |  |  |  +- org.springframework:spring-aop:jar:5.1.2.RELEASE:compile
+[INFO] |  |  |  \- org.springframework:spring-expression:jar:5.1.2.RELEASE:compile
+[INFO] |  |  \- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.7:compile
+[INFO] |  \- io.micrometer:micrometer-core:jar:1.1.0:compile
+[INFO] |     +- org.hdrhistogram:HdrHistogram:jar:2.1.9:compile
+[INFO] |     \- org.latencyutils:LatencyUtils:jar:2.0.3:compile
+[INFO] \- org.springframework.cloud:spring-cloud-starter-consul-discovery:jar:2.1.0.RELEASE:compile
+[INFO]    +- org.springframework.cloud:spring-cloud-starter-consul:jar:2.1.0.RELEASE:compile
+[INFO]    |  +- org.springframework.cloud:spring-cloud-consul-core:jar:2.1.0.RELEASE:compile
+[INFO]    |  +- com.ecwid.consul:consul-api:jar:1.4.1:compile
+[INFO]    |  +- com.google.code.gson:gson:jar:2.8.5:compile
+[INFO]    |  +- org.apache.httpcomponents:httpclient:jar:4.5.6:compile
+[INFO]    |  |  \- commons-codec:commons-codec:jar:1.11:compile
+[INFO]    |  \- org.apache.httpcomponents:httpcore:jar:4.4.10:compile
+[INFO]    +- org.springframework.cloud:spring-cloud-consul-discovery:jar:2.1.0.RELEASE:compile
+[INFO]    |  \- commons-configuration:commons-configuration:jar:1.8:compile
+[INFO]    |     \- commons-lang:commons-lang:jar:2.6:compile
+[INFO]    +- org.springframework.cloud:spring-cloud-netflix-core:jar:2.1.0.RELEASE:compile
+[INFO]    |  \- org.springframework.cloud:spring-cloud-netflix-hystrix:jar:2.1.0.RELEASE:compile
+[INFO]    |     \- org.springframework.boot:spring-boot-starter-aop:jar:2.1.0.RELEASE:compile
+[INFO]    |        \- org.aspectj:aspectjweaver:jar:1.9.2:compile
+[INFO]    +- org.springframework.cloud:spring-cloud-starter-netflix-ribbon:jar:2.1.0.RELEASE:compile
+[INFO]    |  +- org.springframework.cloud:spring-cloud-netflix-ribbon:jar:2.1.0.RELEASE:compile
+[INFO]    |  |  \- org.springframework.cloud:spring-cloud-netflix-archaius:jar:2.1.0.RELEASE:compile
+[INFO]    |  +- org.springframework.cloud:spring-cloud-starter-netflix-archaius:jar:2.1.0.RELEASE:compile
+[INFO]    |  |  \- com.netflix.archaius:archaius-core:jar:0.7.6:compile
+[INFO]    |  |     \- com.google.code.findbugs:jsr305:jar:3.0.1:runtime
+[INFO]    |  +- com.netflix.ribbon:ribbon:jar:2.3.0:compile
+[INFO]    |  |  +- com.netflix.ribbon:ribbon-transport:jar:2.3.0:runtime
+[INFO]    |  |  |  +- io.reactivex:rxnetty-contexts:jar:0.4.9:runtime
+[INFO]    |  |  |  \- io.reactivex:rxnetty-servo:jar:0.4.9:runtime
+[INFO]    |  |  +- com.netflix.hystrix:hystrix-core:jar:1.4.3:runtime
+[INFO]    |  |  +- javax.inject:javax.inject:jar:1:runtime
+[INFO]    |  |  +- io.reactivex:rxnetty:jar:0.4.9:runtime
+[INFO]    |  |  \- com.google.guava:guava:jar:16.0.1:runtime
+[INFO]    |  +- com.netflix.ribbon:ribbon-core:jar:2.3.0:compile
+[INFO]    |  +- com.netflix.ribbon:ribbon-httpclient:jar:2.3.0:compile
+[INFO]    |  |  +- commons-collections:commons-collections:jar:3.2.2:runtime
+[INFO]    |  |  +- com.sun.jersey:jersey-client:jar:1.19.1:runtime
+[INFO]    |  |  |  \- com.sun.jersey:jersey-core:jar:1.19.1:runtime
+[INFO]    |  |  |     \- javax.ws.rs:jsr311-api:jar:1.1.1:runtime
+[INFO]    |  |  +- com.sun.jersey.contribs:jersey-apache-client4:jar:1.19.1:runtime
+[INFO]    |  |  +- com.netflix.servo:servo-core:jar:0.10.1:runtime
+[INFO]    |  |  |  \- com.netflix.servo:servo-internal:jar:0.10.1:runtime
+[INFO]    |  |  \- com.netflix.netflix-commons:netflix-commons-util:jar:0.1.1:runtime
+[INFO]    |  +- com.netflix.ribbon:ribbon-loadbalancer:jar:2.3.0:compile
+[INFO]    |  |  \- com.netflix.netflix-commons:netflix-statistics:jar:0.1.1:runtime
+[INFO]    |  \- io.reactivex:rxjava:jar:1.3.8:compile
+[INFO]    \- joda-time:joda-time:jar:2.10.1:compile
+[INFO] 
+[INFO] ------------< com.test.springcloud:springcloud-serve-hello >------------
+[INFO] Building springcloud-serve-hello 1.0-SNAPSHOT                      [2/2]
+[INFO] --------------------------------[ pom ]---------------------------------
+[WARNING] The POM for org.springframework.boot:spring-boot-starter-validation:jar:2.1.0.RELEASE is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ springcloud-serve-hello ---
+[WARNING] Invalid POM for org.springframework.boot:spring-boot-starter-validation:jar:2.1.0.RELEASE, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] com.test.springcloud:springcloud-serve-hello:pom:1.0-SNAPSHOT
+[INFO] +- com.test.springcloud:springcloud-serve-common:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  \- org.springframework:spring-context:jar:5.1.2.RELEASE:compile
+[INFO] |  |  |     +- (org.springframework:spring-aop:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     +- (org.springframework:spring-beans:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     +- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     \- (org.springframework:spring-expression:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  \- (org.springframework.boot:spring-boot:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.3:compile
+[INFO] |  |  |  |  +- ch.qos.logback:logback-core:jar:1.2.3:compile
+[INFO] |  |  |  |  \- (org.slf4j:slf4j-api:jar:1.7.25:compile - omitted for conflict with 1.7.13)
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.1:compile
+[INFO] |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.25:compile - omitted for duplicate)
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.11.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.25:compile
+[INFO] |  |  |     \- (org.slf4j:slf4j-api:jar:1.7.25:compile - omitted for duplicate)
+[INFO] |  |  +- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:5.1.2.RELEASE:compile
+[INFO] |  |  |  \- org.springframework:spring-jcl:jar:5.1.2.RELEASE:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.23:runtime
+[INFO] |  +- org.springframework.boot:spring-boot-starter-web:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- (org.springframework.boot:spring-boot-starter:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-json:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework.boot:spring-boot-starter:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework:spring-web:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile
+[INFO] |  |  |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0:compile
+[INFO] |  |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.9.7:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.7:compile
+[INFO] |  |  |  |  +- (com.fasterxml.jackson.core:jackson-core:jar:2.9.7:compile - omitted for duplicate)
+[INFO] |  |  |  |  \- (com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile - omitted for duplicate)
+[INFO] |  |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.7:compile
+[INFO] |  |  |  |  +- (com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (com.fasterxml.jackson.core:jackson-core:jar:2.9.7:compile - omitted for duplicate)
+[INFO] |  |  |  |  \- (com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile - omitted for duplicate)
+[INFO] |  |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.7:compile
+[INFO] |  |  |     +- (com.fasterxml.jackson.core:jackson-core:jar:2.9.7:compile - omitted for duplicate)
+[INFO] |  |  |     \- (com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile - omitted for duplicate)
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (javax.annotation:javax.annotation-api:jar:1.3.2:compile - omitted for duplicate)
+[INFO] |  |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.12:compile
+[INFO] |  |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.12:compile
+[INFO] |  |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.12:compile
+[INFO] |  |  |     \- (org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.12:compile - omitted for duplicate)
+[INFO] |  |  +- org.hibernate.validator:hibernate-validator:jar:6.0.13.Final:compile
+[INFO] |  |  |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO] |  |  |  +- org.jboss.logging:jboss-logging:jar:3.3.2.Final:compile
+[INFO] |  |  |  \- com.fasterxml:classmate:jar:1.3.4:compile
+[INFO] |  |  +- org.springframework:spring-web:jar:5.1.2.RELEASE:compile
+[INFO] |  |  |  +- org.springframework:spring-beans:jar:5.1.2.RELEASE:compile
+[INFO] |  |  |  |  \- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  \- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  \- org.springframework:spring-webmvc:jar:5.1.2.RELEASE:compile
+[INFO] |  |     +- org.springframework:spring-aop:jar:5.1.2.RELEASE:compile
+[INFO] |  |     |  +- (org.springframework:spring-beans:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |     |  \- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |     +- (org.springframework:spring-beans:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |     +- (org.springframework:spring-context:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |     +- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |     +- org.springframework:spring-expression:jar:5.1.2.RELEASE:compile
+[INFO] |  |     |  \- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |     \- (org.springframework:spring-web:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  +- org.springframework.cloud:spring-cloud-starter-openfeign:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-starter:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework.boot:spring-boot-starter:jar:2.1.2.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |  |  +- org.springframework.cloud:spring-cloud-context:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  |  \- (org.springframework.security:spring-security-crypto:jar:5.1.3.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework.cloud:spring-cloud-commons:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  \- org.springframework.security:spring-security-rsa:jar:1.0.7.RELEASE:compile
+[INFO] |  |  |     \- org.bouncycastle:bcpkix-jdk15on:jar:1.60:compile
+[INFO] |  |  |        \- org.bouncycastle:bcprov-jdk15on:jar:1.60:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-openfeign-core:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework.boot:spring-boot-autoconfigure:jar:2.1.2.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |  |  +- org.springframework.cloud:spring-cloud-netflix-ribbon:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  |  \- org.springframework.cloud:spring-cloud-netflix-archaius:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- org.springframework.boot:spring-boot-starter-aop:jar:2.1.2.RELEASE:compile
+[INFO] |  |  |  |  +- (org.springframework.boot:spring-boot-starter:jar:2.1.2.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |  |  |  +- (org.springframework:spring-aop:jar:5.1.4.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |  |  \- org.aspectj:aspectjweaver:jar:1.9.2:compile
+[INFO] |  |  |  \- io.github.openfeign.form:feign-form-spring:jar:3.5.0:compile
+[INFO] |  |  |     +- io.github.openfeign.form:feign-form:jar:3.5.0:compile
+[INFO] |  |  |     |  \- (org.slf4j:slf4j-api:jar:1.7.25:compile - omitted for duplicate)
+[INFO] |  |  |     +- (org.springframework:spring-web:jar:5.1.3.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |     +- commons-fileupload:commons-fileupload:jar:1.3.3:compile
+[INFO] |  |  |     |  \- commons-io:commons-io:jar:2.2:compile
+[INFO] |  |  |     \- (org.slf4j:slf4j-api:jar:1.7.25:compile - omitted for duplicate)
+[INFO] |  |  +- (org.springframework:spring-web:jar:5.1.4.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-commons:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  \- org.springframework.security:spring-security-crypto:jar:5.1.3.RELEASE:compile
+[INFO] |  |  +- io.github.openfeign:feign-core:jar:10.1.0:compile
+[INFO] |  |  +- io.github.openfeign:feign-slf4j:jar:10.1.0:compile
+[INFO] |  |  |  +- (io.github.openfeign:feign-core:jar:10.1.0:compile - omitted for duplicate)
+[INFO] |  |  |  \- org.slf4j:slf4j-api:jar:1.7.13:compile
+[INFO] |  |  +- io.github.openfeign:feign-hystrix:jar:10.1.0:compile
+[INFO] |  |  |  +- (io.github.openfeign:feign-core:jar:10.1.0:compile - omitted for duplicate)
+[INFO] |  |  |  \- com.netflix.hystrix:hystrix-core:jar:1.4.26:compile
+[INFO] |  |  |     +- (io.reactivex:rxjava:jar:1.1.1:compile - omitted for conflict with 1.2.0)
+[INFO] |  |  |     \- (org.slf4j:slf4j-api:jar:1.7.0:compile - omitted for conflict with 1.7.13)
+[INFO] |  |  \- (io.github.openfeign:feign-core:jar:10.1.0:compile - omitted for duplicate)
+[INFO] |  +- org.springframework.boot:spring-boot-starter-actuator:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- (org.springframework.boot:spring-boot-starter:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- org.springframework.boot:spring-boot-actuator:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  |  \- (org.springframework.boot:spring-boot:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework.boot:spring-boot-autoconfigure:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (com.fasterxml.jackson.core:jackson-databind:jar:2.9.7:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework:spring-core:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework:spring-context:jar:5.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  \- (com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.7:runtime - omitted for duplicate)
+[INFO] |  |  \- io.micrometer:micrometer-core:jar:1.1.0:compile
+[INFO] |  |     +- org.hdrhistogram:HdrHistogram:jar:2.1.9:compile
+[INFO] |  |     \- org.latencyutils:LatencyUtils:jar:2.0.3:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-starter-consul-discovery:jar:2.1.0.RELEASE:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-starter-consul:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework.cloud:spring-cloud-commons:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework.cloud:spring-cloud-context:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- org.springframework.cloud:spring-cloud-consul-core:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  |  +- (org.apache.httpcomponents:httpclient:jar:4.5.6:compile - omitted for duplicate)
+[INFO] |  |  |  |  \- (org.apache.httpcomponents:httpcore:jar:4.4.10:compile - omitted for duplicate)
+[INFO] |  |  |  +- com.ecwid.consul:consul-api:jar:1.4.1:compile
+[INFO] |  |  |  |  +- (com.google.code.gson:gson:jar:2.8.2:runtime - omitted for conflict with 2.8.5)
+[INFO] |  |  |  |  +- (org.apache.httpcomponents:httpcore:jar:4.4.9:runtime - omitted for conflict with 4.4.10)
+[INFO] |  |  |  |  \- (org.apache.httpcomponents:httpclient:jar:4.5.5:runtime - omitted for conflict with 4.5.6)
+[INFO] |  |  |  +- com.google.code.gson:gson:jar:2.8.5:compile
+[INFO] |  |  |  +- org.apache.httpcomponents:httpclient:jar:4.5.6:compile
+[INFO] |  |  |  |  +- (org.apache.httpcomponents:httpcore:jar:4.4.10:compile - omitted for duplicate)
+[INFO] |  |  |  |  \- commons-codec:commons-codec:jar:1.10:compile
+[INFO] |  |  |  \- org.apache.httpcomponents:httpcore:jar:4.4.10:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-consul-discovery:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework.cloud:spring-cloud-consul-core:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  \- commons-configuration:commons-configuration:jar:1.8:compile
+[INFO] |  |  |     \- commons-lang:commons-lang:jar:2.6:compile
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-netflix-core:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  \- org.springframework.cloud:spring-cloud-netflix-hystrix:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |     +- (org.springframework.boot:spring-boot-autoconfigure:jar:2.1.2.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |  |     \- (org.springframework.boot:spring-boot-starter-aop:jar:2.1.2.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  +- org.springframework.cloud:spring-cloud-starter-netflix-ribbon:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework.cloud:spring-cloud-starter:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- (org.springframework.cloud:spring-cloud-netflix-ribbon:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  +- org.springframework.cloud:spring-cloud-starter-netflix-archaius:jar:2.1.0.RELEASE:compile
+[INFO] |  |  |  |  +- (org.springframework.cloud:spring-cloud-starter:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (org.springframework.cloud:spring-cloud-netflix-ribbon:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- (org.springframework.cloud:spring-cloud-netflix-archaius:jar:2.1.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |  |  +- com.netflix.archaius:archaius-core:jar:0.7.6:compile
+[INFO] |  |  |  |  |  +- com.google.code.findbugs:jsr305:jar:3.0.1:runtime
+[INFO] |  |  |  |  |  +- (commons-configuration:commons-configuration:jar:1.8:runtime - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.6.4:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  |  +- (com.fasterxml.jackson.core:jackson-annotations:jar:2.4.3:runtime - omitted for conflict with 2.9.0)
+[INFO] |  |  |  |  |  +- (com.fasterxml.jackson.core:jackson-core:jar:2.4.3:runtime - omitted for conflict with 2.9.7)
+[INFO] |  |  |  |  |  \- (com.fasterxml.jackson.core:jackson-databind:jar:2.4.3:runtime - omitted for conflict with 2.9.7)
+[INFO] |  |  |  |  \- (commons-configuration:commons-configuration:jar:1.8:compile - omitted for duplicate)
+[INFO] |  |  |  +- com.netflix.ribbon:ribbon:jar:2.3.0:compile
+[INFO] |  |  |  |  +- (com.netflix.ribbon:ribbon-core:jar:2.3.0:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- com.netflix.ribbon:ribbon-transport:jar:2.3.0:runtime
+[INFO] |  |  |  |  |  +- (com.netflix.ribbon:ribbon-core:jar:2.3.0:runtime - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (com.netflix.ribbon:ribbon-loadbalancer:jar:2.3.0:runtime - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (io.reactivex:rxjava:jar:1.0.10:runtime - omitted for conflict with 1.1.1)
+[INFO] |  |  |  |  |  +- (io.reactivex:rxnetty:jar:0.4.9:runtime - omitted for duplicate)
+[INFO] |  |  |  |  |  +- io.reactivex:rxnetty-contexts:jar:0.4.9:runtime
+[INFO] |  |  |  |  |  |  +- (io.reactivex:rxjava:jar:1.0.10:runtime - omitted for conflict with 1.1.1)
+[INFO] |  |  |  |  |  |  \- (io.reactivex:rxnetty:jar:0.4.9:runtime - omitted for duplicate)
+[INFO] |  |  |  |  |  +- io.reactivex:rxnetty-servo:jar:0.4.9:runtime
+[INFO] |  |  |  |  |  |  +- (io.reactivex:rxjava:jar:1.0.10:runtime - omitted for conflict with 1.1.1)
+[INFO] |  |  |  |  |  |  +- (io.reactivex:rxnetty:jar:0.4.9:runtime - omitted for duplicate)
+[INFO] |  |  |  |  |  |  \- (com.netflix.servo:servo-core:jar:0.7.5:runtime - omitted for conflict with 0.10.1)
+[INFO] |  |  |  |  |  +- (javax.inject:javax.inject:jar:1:runtime - omitted for duplicate)
+[INFO] |  |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.12:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  |  \- (com.netflix.archaius:archaius-core:jar:0.7.6:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- (com.netflix.hystrix:hystrix-core:jar:1.4.3:runtime - omitted for conflict with 1.4.26)
+[INFO] |  |  |  |  +- javax.inject:javax.inject:jar:1:runtime
+[INFO] |  |  |  |  +- (io.reactivex:rxjava:jar:1.0.10:runtime - omitted for conflict with 1.1.1)
+[INFO] |  |  |  |  +- io.reactivex:rxnetty:jar:0.4.9:runtime
+[INFO] |  |  |  |  |  +- (io.reactivex:rxjava:jar:1.0.10:runtime - omitted for conflict with 1.1.1)
+[INFO] |  |  |  |  |  \- (org.slf4j:slf4j-api:jar:1.7.6:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  +- (commons-configuration:commons-configuration:jar:1.8:runtime - omitted for duplicate)
+[INFO] |  |  |  |  \- (com.netflix.archaius:archaius-core:jar:0.7.6:runtime - omitted for duplicate)
+[INFO] |  |  |  +- com.netflix.ribbon:ribbon-core:jar:2.3.0:compile
+[INFO] |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.6.4:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  +- (commons-configuration:commons-configuration:jar:1.8:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- (commons-lang:commons-lang:jar:2.6:runtime - omitted for duplicate)
+[INFO] |  |  |  |  \- (com.netflix.archaius:archaius-core:jar:0.7.6:runtime - omitted for duplicate)
+[INFO] |  |  |  +- com.netflix.ribbon:ribbon-httpclient:jar:2.3.0:compile
+[INFO] |  |  |  |  +- (com.netflix.ribbon:ribbon-core:jar:2.3.0:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- (com.netflix.ribbon:ribbon-loadbalancer:jar:2.3.0:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- commons-collections:commons-collections:jar:3.2.2:runtime
+[INFO] |  |  |  |  +- (org.apache.httpcomponents:httpclient:jar:4.2.1:runtime - omitted for conflict with 4.5.6)
+[INFO] |  |  |  |  +- com.sun.jersey:jersey-client:jar:1.19.1:runtime
+[INFO] |  |  |  |  |  \- com.sun.jersey:jersey-core:jar:1.19.1:runtime
+[INFO] |  |  |  |  |     \- javax.ws.rs:jsr311-api:jar:1.1.1:runtime
+[INFO] |  |  |  |  +- com.sun.jersey.contribs:jersey-apache-client4:jar:1.19.1:runtime
+[INFO] |  |  |  |  |  +- (org.apache.httpcomponents:httpclient:jar:4.1.1:runtime - omitted for conflict with 4.5.6)
+[INFO] |  |  |  |  |  \- (com.sun.jersey:jersey-client:jar:1.19.1:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.12:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  +- com.netflix.servo:servo-core:jar:0.10.1:runtime
+[INFO] |  |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.12:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  |  \- com.netflix.servo:servo-internal:jar:0.10.1:runtime
+[INFO] |  |  |  |  |     \- (org.slf4j:slf4j-api:jar:1.7.12:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  +- (com.netflix.archaius:archaius-core:jar:0.7.6:runtime - omitted for duplicate)
+[INFO] |  |  |  |  \- com.netflix.netflix-commons:netflix-commons-util:jar:0.1.1:runtime
+[INFO] |  |  |  |     \- (org.slf4j:slf4j-api:jar:1.6.4:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  +- com.netflix.ribbon:ribbon-loadbalancer:jar:2.3.0:compile
+[INFO] |  |  |  |  +- (com.netflix.ribbon:ribbon-core:jar:2.3.0:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- com.netflix.netflix-commons:netflix-statistics:jar:0.1.1:runtime
+[INFO] |  |  |  |  |  \- (org.slf4j:slf4j-api:jar:1.6.4:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  +- (io.reactivex:rxjava:jar:1.0.9:runtime - omitted for conflict with 1.1.1)
+[INFO] |  |  |  |  +- (org.slf4j:slf4j-api:jar:1.7.12:runtime - omitted for conflict with 1.7.13)
+[INFO] |  |  |  |  +- (com.netflix.servo:servo-core:jar:0.10.1:runtime - omitted for duplicate)
+[INFO] |  |  |  |  +- (com.netflix.archaius:archaius-core:jar:0.7.6:runtime - omitted for duplicate)
+[INFO] |  |  |  |  \- (com.netflix.netflix-commons:netflix-commons-util:jar:0.1.1:runtime - omitted for duplicate)
+[INFO] |  |  |  \- io.reactivex:rxjava:jar:1.2.0:compile
+[INFO] |  |  \- joda-time:joda-time:jar:2.10.1:compile
+[INFO] |  +- org.springframework.cloud:spring-cloud-starter-hystrix:jar:1.4.7.RELEASE:compile
+[INFO] |  |  \- org.springframework.cloud:spring-cloud-starter-netflix-hystrix:jar:1.4.7.RELEASE:compile
+[INFO] |  |     +- (org.springframework.cloud:spring-cloud-starter:jar:1.3.6.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |     +- (org.springframework.cloud:spring-cloud-netflix-core:jar:1.4.7.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |     +- (org.springframework.cloud:spring-cloud-starter-netflix-archaius:jar:1.4.7.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |     +- (com.netflix.hystrix:hystrix-core:jar:1.5.12:compile - omitted for conflict with 1.4.26)
+[INFO] |  |     +- com.netflix.hystrix:hystrix-metrics-event-stream:jar:1.5.12:compile
+[INFO] |  |     |  +- com.netflix.hystrix:hystrix-serialization:jar:1.5.12:runtime
+[INFO] |  |     |  |  +- com.fasterxml.jackson.module:jackson-module-afterburner:jar:2.7.5:runtime
+[INFO] |  |     |  |  |  +- (com.fasterxml.jackson.core:jackson-core:jar:2.7.5:runtime - omitted for conflict with 2.9.7)
+[INFO] |  |     |  |  |  \- (com.fasterxml.jackson.core:jackson-databind:jar:2.7.5:runtime - omitted for conflict with 2.9.7)
+[INFO] |  |     |  |  +- (com.netflix.hystrix:hystrix-core:jar:1.5.12:runtime - omitted for conflict with 1.4.26)
+[INFO] |  |     |  |  +- (com.fasterxml.jackson.core:jackson-core:jar:2.7.5:runtime - omitted for conflict with 2.9.7)
+[INFO] |  |     |  |  +- (com.fasterxml.jackson.core:jackson-databind:jar:2.7.5:runtime - omitted for conflict with 2.9.7)
+[INFO] |  |     |  |  \- (com.fasterxml.jackson.core:jackson-annotations:jar:2.7.5:runtime - omitted for conflict with 2.9.0)
+[INFO] |  |     |  \- (com.netflix.hystrix:hystrix-core:jar:1.5.12:compile - omitted for conflict with 1.4.26)
+[INFO] |  |     \- com.netflix.hystrix:hystrix-javanica:jar:1.5.12:compile
+[INFO] |  |        +- org.apache.commons:commons-lang3:jar:3.1:runtime
+[INFO] |  |        +- org.ow2.asm:asm:jar:5.0.4:runtime
+[INFO] |  |        +- (com.netflix.hystrix:hystrix-core:jar:1.5.12:compile - omitted for conflict with 1.4.26)
+[INFO] |  |        +- (org.aspectj:aspectjweaver:jar:1.8.6:compile - omitted for conflict with 1.9.2)
+[INFO] |  |        \- (com.google.guava:guava:jar:15.0:compile - omitted for conflict with 20.0)
+[INFO] |  +- com.github.xiaoymin:knife4j-spring-boot-starter:jar:2.0.2:compile
+[INFO] |  |  +- com.github.xiaoymin:knife4j-spring-boot-autoconfigure:jar:2.0.2:compile
+[INFO] |  |  |  \- com.github.xiaoymin:knife4j-spring:jar:2.0.2:compile
+[INFO] |  |  |     +- com.github.xiaoymin:knife4j-annotations:jar:2.0.2:compile
+[INFO] |  |  |     +- com.github.xiaoymin:knife4j-core:jar:2.0.2:compile
+[INFO] |  |  |     |  \- (org.slf4j:slf4j-api:jar:1.7.28:compile - omitted for conflict with 1.7.13)
+[INFO] |  |  |     +- org.javassist:javassist:jar:3.25.0-GA:compile
+[INFO] |  |  |     +- io.swagger:swagger-models:jar:1.5.22:compile
+[INFO] |  |  |     |  +- (com.fasterxml.jackson.core:jackson-annotations:jar:2.9.8:compile - omitted for conflict with 2.9.0)
+[INFO] |  |  |     |  \- (io.swagger:swagger-annotations:jar:1.5.22:compile - omitted for conflict with 1.5.13)
+[INFO] |  |  |     +- io.springfox:springfox-swagger2:jar:2.9.2:compile
+[INFO] |  |  |     |  +- io.springfox:springfox-spi:jar:2.9.2:compile
+[INFO] |  |  |     |  |  \- io.springfox:springfox-core:jar:2.9.2:compile
+[INFO] |  |  |     |  |     +- net.bytebuddy:byte-buddy:jar:1.8.12:compile
+[INFO] |  |  |     |  |     +- (com.google.guava:guava:jar:20.0:compile - omitted for conflict with 15.0)
+[INFO] |  |  |     |  |     +- (com.fasterxml:classmate:jar:1.4.0:compile - omitted for conflict with 1.3.4)
+[INFO] |  |  |     |  |     +- (org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     |  |     \- (org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     |  +- io.springfox:springfox-schema:jar:2.9.2:compile
+[INFO] |  |  |     |  |  +- (io.springfox:springfox-core:jar:2.9.2:compile - omitted for duplicate)
+[INFO] |  |  |     |  |  \- (io.springfox:springfox-spi:jar:2.9.2:compile - omitted for duplicate)
+[INFO] |  |  |     |  +- io.springfox:springfox-swagger-common:jar:2.9.2:compile
+[INFO] |  |  |     |  |  +- (io.springfox:springfox-spi:jar:2.9.2:compile - omitted for duplicate)
+[INFO] |  |  |     |  |  +- (io.springfox:springfox-schema:jar:2.9.2:compile - omitted for duplicate)
+[INFO] |  |  |     |  |  +- (io.springfox:springfox-spring-web:jar:2.9.2:compile - omitted for duplicate)
+[INFO] |  |  |     |  |  +- (com.google.guava:guava:jar:20.0:compile - omitted for conflict with 15.0)
+[INFO] |  |  |     |  |  +- (com.fasterxml:classmate:jar:1.4.0:compile - omitted for conflict with 1.3.4)
+[INFO] |  |  |     |  |  +- (org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     |  |  \- (org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     |  +- io.springfox:springfox-spring-web:jar:2.9.2:compile
+[INFO] |  |  |     |  |  +- (com.google.guava:guava:jar:20.0:compile - omitted for conflict with 15.0)
+[INFO] |  |  |     |  |  +- (com.fasterxml:classmate:jar:1.4.0:compile - omitted for conflict with 1.3.4)
+[INFO] |  |  |     |  |  +- (org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     |  |  +- (org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     |  |  \- (io.springfox:springfox-spi:jar:2.9.2:compile - omitted for duplicate)
+[INFO] |  |  |     |  +- (com.google.guava:guava:jar:20.0:compile - omitted for conflict with 15.0)
+[INFO] |  |  |     |  +- (com.fasterxml:classmate:jar:1.4.0:compile - omitted for conflict with 1.3.4)
+[INFO] |  |  |     |  +- org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile
+[INFO] |  |  |     |  |  +- (org.springframework:spring-beans:jar:4.0.9.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |     |  |  +- (org.springframework:spring-context:jar:4.0.9.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |     |  |  \- (org.springframework:spring-aop:jar:4.0.9.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |     |  +- org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile
+[INFO] |  |  |     |  |  \- (org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |     |  \- org.mapstruct:mapstruct:jar:1.2.0.Final:compile
+[INFO] |  |  |     \- io.springfox:springfox-bean-validators:jar:2.9.2:compile
+[INFO] |  |  |        +- (com.google.guava:guava:jar:20.0:compile - omitted for conflict with 15.0)
+[INFO] |  |  |        +- (com.fasterxml:classmate:jar:1.4.0:compile - omitted for conflict with 1.3.4)
+[INFO] |  |  |        +- (org.slf4j:slf4j-api:jar:1.7.25:compile - omitted for conflict with 1.7.13)
+[INFO] |  |  |        +- (org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |        +- (org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile - omitted for duplicate)
+[INFO] |  |  |        \- (io.springfox:springfox-spi:jar:2.9.2:compile - omitted for duplicate)
+[INFO] |  |  \- com.github.xiaoymin:knife4j-spring-ui:jar:2.0.2:compile
+[INFO] |  +- io.swagger:swagger-annotations:jar:1.5.13:compile
+[INFO] |  +- com.google.guava:guava:jar:20.0:compile
+[INFO] |  +- org.projectlombok:lombok:jar:1.18.2:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-validation:jar:2.1.0.RELEASE:compile
+[INFO] |  +- (com.alibaba:fastjson:jar:1.2.51:compile - omitted for duplicate)
+[INFO] |  +- org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:2.0.0:compile
+[INFO] |  |  +- (org.springframework.boot:spring-boot-starter:jar:2.0.8.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-jdbc:jar:2.0.8.RELEASE:compile
+[INFO] |  |  |  +- (org.springframework.boot:spring-boot-starter:jar:2.0.8.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |  |  +- com.zaxxer:HikariCP:jar:2.7.9:compile
+[INFO] |  |  |  |  \- (org.slf4j:slf4j-api:jar:1.7.25:compile - omitted for conflict with 1.7.13)
+[INFO] |  |  |  \- org.springframework:spring-jdbc:jar:5.0.12.RELEASE:compile
+[INFO] |  |  |     +- (org.springframework:spring-beans:jar:5.0.12.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |     +- (org.springframework:spring-core:jar:5.0.12.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |     \- org.springframework:spring-tx:jar:5.0.12.RELEASE:compile
+[INFO] |  |  |        +- (org.springframework:spring-beans:jar:5.0.12.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  |        \- (org.springframework:spring-core:jar:5.0.12.RELEASE:compile - omitted for conflict with 5.1.2.RELEASE)
+[INFO] |  |  +- org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:jar:2.0.0:compile
+[INFO] |  |  |  \- (org.springframework.boot:spring-boot-autoconfigure:jar:2.0.8.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |  |  +- org.mybatis:mybatis:jar:3.5.0:compile
+[INFO] |  |  \- org.mybatis:mybatis-spring:jar:2.0.0:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:8.0.13:compile
+[INFO] |  \- com.github.pagehelper:pagehelper-spring-boot-starter:jar:1.3.0:compile
+[INFO] |     +- (org.springframework.boot:spring-boot-starter:jar:2.3.1.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |     +- (org.mybatis.spring.boot:mybatis-spring-boot-starter:jar:2.1.3:compile - omitted for conflict with 2.0.0)
+[INFO] |     +- com.github.pagehelper:pagehelper-spring-boot-autoconfigure:jar:1.3.0:compile
+[INFO] |     |  \- (org.springframework.boot:spring-boot-autoconfigure:jar:2.3.1.RELEASE:compile - omitted for conflict with 2.1.0.RELEASE)
+[INFO] |     \- com.github.pagehelper:pagehelper:jar:5.2.0:compile
+[INFO] |        \- com.github.jsqlparser:jsqlparser:jar:3.2:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.51:compile
+[INFO] \- com.local:xxl-job:jar:2.3.1-SNAPSHOT:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] springcloud-serve-gateway .......................... SUCCESS [  2.809 s]
+[INFO] springcloud-serve-hello 1.0-SNAPSHOT ............... SUCCESS [  3.829 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 14.234 s
+[INFO] Finished at: 2021-06-27T01:33:29+08:00
+[INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "nexus" could not be activated because it does not exist.
