@@ -12,6 +12,7 @@ import com.test.hello.pojo.dao.StockDetailsInfo;
 import com.test.hello.pojo.dto.QueryStockBaseInfoDto;
 import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import com.test.hello.pojo.vo.request.ManualGetStockInfoVo;
+import com.test.hello.service.AsyncStock;
 import com.test.hello.service.IStockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
+import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
 import static com.test.hello.config.LoadingStockConfig.STOCK_BASE_INFO_MAP;
@@ -55,6 +57,10 @@ public class StockServiceImpl implements IStockService {
 
     @Autowired
     private StockDetailsInfoMapper stockDetailsInfoMapper;
+
+    @Autowired
+    private AsyncStock asyncStock;
+
 
     @Override
     public String getBaseInfo() {
@@ -165,6 +171,7 @@ public class StockServiceImpl implements IStockService {
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public String manualGetStockInfo(ManualGetStockInfoVo manualGetStockInfoVo) {
         StockBaseInfo queryCondition = new StockBaseInfo();
         List<StockBaseInfo> stockBaseInfoList = stockInfoMapper.getStockBaseInfoList(queryCondition);
@@ -183,23 +190,35 @@ public class StockServiceImpl implements IStockService {
             // 500条获取插入一次
             for (int i = 0; i < part; i++) {
                 List<String> queryCodeList = codeList.subList(0, pointsDataLimit);
-                List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
+//                List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
                 int j = 1;
+                CompletableFuture<List<StockDetailsInfo>> listCompletableFuture = asyncGetStock(queryCodeList, manualGetStockInfoVo, map, j);
+                List<StockDetailsInfo> join = listCompletableFuture.join();
+
+
+
+
+                /*int j = 1;
                 for (String stockCode : queryCodeList) {
-                    stockDetailsInfoList = task(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map,j++);
-                }
-                stockDetailsInfoMapper.batchSave(stockDetailsInfoList);
+                    stockDetailsInfoList = task(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map, j++);
+                }*/
+                stockDetailsInfoMapper.batchSave(join);
                 // 剔除已经插入的
                 codeList.subList(0, pointsDataLimit).clear();
                 stringBuffer.setLength(0);
             }
             if (codeList.size() > 0) {
-                List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
+//                List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
+                /*List<StockDetailsInfo> stockDetailsInfoList = Collections.synchronizedList(new ArrayList<>());
+                int j = 1;
                 for (String stockCode : codeList) {
-                    stockDetailsInfoList = task(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map,1);
-                }
+                    stockDetailsInfoList = task(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map, j);
+                }*/
+                int j = 1;
+                CompletableFuture<List<StockDetailsInfo>> listCompletableFuture = asyncGetStock(codeList, manualGetStockInfoVo, map, j);
+                List<StockDetailsInfo> join = listCompletableFuture.join();
                 //新增最后剩下的
-                stockDetailsInfoMapper.batchSave(stockDetailsInfoList);
+                stockDetailsInfoMapper.batchSave(join);
             }
         } else {
             System.out.println("小于500条直接进这里");
@@ -208,15 +227,15 @@ public class StockServiceImpl implements IStockService {
     }
 
 
-    /*public CList<StockDetailsInfo> asyncGetStock() {
-        List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
-        for (String stockCode : codeList) {
-            stockDetailsInfoList = task(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map,1);
+    public CompletableFuture<List<StockDetailsInfo>> asyncGetStock(List<String> queryCodeList, ManualGetStockInfoVo manualGetStockInfoVo, HashMap<String, String> map, int num) {
+//        List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
+        List<StockDetailsInfo> stockDetailsInfoList = Collections.synchronizedList(new ArrayList<>(1024));
+        Semaphore semaphore = new Semaphore(queryCodeList.size());
+        for (String stockCode : queryCodeList) {
+            stockDetailsInfoList = asyncStock.task1(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map, num++, semaphore);
         }
-
-        return null;
-    }*/
-
+        return CompletableFuture.completedFuture(stockDetailsInfoList);
+    }
 
     /**
      * 手动自定义保存每日信息
@@ -228,7 +247,7 @@ public class StockServiceImpl implements IStockService {
      * @return
      */
     public static List<StockDetailsInfo> task(String stockCode, List<StockDetailsInfo> stockDetailsInfoList,
-                                       ManualGetStockInfoVo manualGetStockInfoVo, HashMap<String, String> map,int i) {
+                                              ManualGetStockInfoVo manualGetStockInfoVo, HashMap<String, String> map, int i) {
         String code = stockCode.substring(2, 8);
         HashMap<String, String> paramMap = new HashMap<>(8);
         paramMap.put("code", "cn_" + code);
@@ -281,7 +300,7 @@ public class StockServiceImpl implements IStockService {
     // 计时工具 StopWatch：https://www.cnblogs.com/kingsonfu/p/11175524.html
     @Override
     @Async("threadPoolTaskExecutor")
-    public CompletableFuture<String> async(int sleepTime,String str) {
+    public CompletableFuture<String> async(int sleepTime, String str) {
         StopWatch stopWatch = new StopWatch("计时器");
         stopWatch.start(str);
         try {
@@ -291,7 +310,7 @@ public class StockServiceImpl implements IStockService {
         }
         String hello = str;
         stopWatch.stop();
-        System.out.println(str + " 耗时 " + stopWatch.getTotalTimeMillis());
+        System.out.println(str + " 耗时 " + stopWatch.getTotalTimeMillis() + Thread.currentThread().getName());
         System.out.println("计时器整体数据" + stopWatch.prettyPrint());
         return CompletableFuture.completedFuture(hello);
     }
