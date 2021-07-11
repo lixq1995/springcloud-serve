@@ -12,12 +12,11 @@ import com.test.hello.pojo.dao.StockDetailsInfo;
 import com.test.hello.pojo.dto.QueryStockBaseInfoDto;
 import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import com.test.hello.pojo.vo.request.ManualGetStockInfoVo;
-import com.test.hello.service.AsyncStock;
 import com.test.hello.service.IStockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StopWatch;
@@ -30,9 +29,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
-import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.test.hello.config.LoadingStockConfig.STOCK_BASE_INFO_MAP;
 
@@ -59,7 +57,7 @@ public class StockServiceImpl implements IStockService {
     private StockDetailsInfoMapper stockDetailsInfoMapper;
 
     @Autowired
-    private AsyncStock asyncStock;
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
 
     @Override
@@ -75,7 +73,7 @@ public class StockServiceImpl implements IStockService {
             JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("rank");
             List<StockBaseInfo> stockBaseInfos = jsonArray.toJavaList(StockBaseInfo.class);
             saveStockInfoList.addAll(stockBaseInfos);
-            System.out.println("次数 ：" + (i + 1));
+            log.info("次数 ：{}", (i + 1));
         }
         stockInfoMapper.batchSave(saveStockInfoList);
         return "success";
@@ -170,14 +168,68 @@ public class StockServiceImpl implements IStockService {
     }
 
 
+    /**
+     * 多线程手动自定义保存每日信息
+     *
+     * @param stockCode
+     * @param manualGetStockInfoVo
+     * @param map
+     * @return
+     */
+    // todo @Async有两个使用的限制 ,1它必须仅适用于 public 方法，2在同一个类中调用异步方法将无法正常工作(self-invocation)
+    // 不能同时使用@Async线程池与CompletableFuture.supplyAsync。 否则CompletableFuture.supplyAsync返回空指针
+    // @Async("threadPoolTaskExecutor")
+    // 直接传入for循环外new的stockDetailsInfo对象，500次，其中每次赋值都是对同一个对象操作，最终会覆盖之前的，保存500个同一的值
+    public List<StockDetailsInfo> task1(String stockCode, ManualGetStockInfoVo manualGetStockInfoVo,
+                                        HashMap<String, String> map/*,StockDetailsInfo stockDetailsInfo*/) {
+        ArrayList<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
+        try {
+            String code = stockCode.substring(2, 8);
+            HashMap<String, String> paramMap = new HashMap<>(8);
+            paramMap.put("code", "cn_" + code);
+            paramMap.put("start", manualGetStockInfoVo.getStartDate());
+            paramMap.put("end", manualGetStockInfoVo.getEndDate());
+
+            String responseString = HttpSslClientUtil.httpGet(DETAILS_HISTORY_INFO_URL, paramMap, map);
+            int length = responseString.length();
+            String substring = responseString.substring(1, length - 2);
+            JSONObject jsonObject = JSONObject.parseObject(substring);
+            if (null == jsonObject || !jsonObject.containsKey("hq")) {
+                return stockDetailsInfoList;
+            }
+            JSONArray jsonArray = jsonObject.getJSONArray("hq");
+
+            Iterator<Object> it = jsonArray.iterator();
+            while (it.hasNext()) {
+                JSONArray jsonAry = (JSONArray) it.next();
+                String string = jsonAry.getString(0);
+                Date date = DateUtil.parseDate(string);
+                StockDetailsInfo stockDetailsInfo = StockDetailsInfo.builder().openingDate(date).
+                        stockName(STOCK_BASE_INFO_MAP.get(code)).
+                        stockCode(code).
+                        openingPriceToday(jsonAry.getString(1)).
+                        currentPrice(jsonAry.getString(2)).
+                        quoteChange(jsonAry.getString(4)).
+                        lowestPriceToday(jsonAry.getString(5)).
+                        highestPriceToday(jsonAry.getString(6)).
+                        volume(jsonAry.getString(7)).
+                        turnoverRate(jsonAry.getString(9)).build();
+//                log.info("线程名：{}  股票信息 ：{}", Thread.currentThread().getName() ,stockDetailsInfo);
+                stockDetailsInfoList.add(stockDetailsInfo);
+            }
+        } catch (Exception e) {
+            log.info("get Stock Exception ,stockCode is : {}", stockCode);
+            e.printStackTrace();
+        }
+        return stockDetailsInfoList;
+    }
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public String manualGetStockInfo(ManualGetStockInfoVo manualGetStockInfoVo) {
         StockBaseInfo queryCondition = new StockBaseInfo();
         List<StockBaseInfo> stockBaseInfoList = stockInfoMapper.getStockBaseInfoList(queryCondition);
         List<String> codeList = stockBaseInfoList.stream().map(StockBaseInfo::getCode).collect(Collectors.toList());
-
-
         HashMap<String, String> map = new HashMap<>(8);
         //限制条数500条一次，数据过多get股票接口报错入参太长
         int pointsDataLimit = 500;
@@ -190,35 +242,16 @@ public class StockServiceImpl implements IStockService {
             // 500条获取插入一次
             for (int i = 0; i < part; i++) {
                 List<String> queryCodeList = codeList.subList(0, pointsDataLimit);
-//                List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
-                int j = 1;
-                CompletableFuture<List<StockDetailsInfo>> listCompletableFuture = asyncGetStock(queryCodeList, manualGetStockInfoVo, map, j);
-                List<StockDetailsInfo> join = listCompletableFuture.join();
-
-
-
-
-                /*int j = 1;
-                for (String stockCode : queryCodeList) {
-                    stockDetailsInfoList = task(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map, j++);
-                }*/
-                stockDetailsInfoMapper.batchSave(join);
+                List<StockDetailsInfo> listCompletableFuture = asyncGetStock(queryCodeList, manualGetStockInfoVo, map);
+                stockDetailsInfoMapper.batchSave(listCompletableFuture);
                 // 剔除已经插入的
                 codeList.subList(0, pointsDataLimit).clear();
                 stringBuffer.setLength(0);
             }
             if (codeList.size() > 0) {
-//                List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
-                /*List<StockDetailsInfo> stockDetailsInfoList = Collections.synchronizedList(new ArrayList<>());
-                int j = 1;
-                for (String stockCode : codeList) {
-                    stockDetailsInfoList = task(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map, j);
-                }*/
-                int j = 1;
-                CompletableFuture<List<StockDetailsInfo>> listCompletableFuture = asyncGetStock(codeList, manualGetStockInfoVo, map, j);
-                List<StockDetailsInfo> join = listCompletableFuture.join();
+                List<StockDetailsInfo> listCompletableFuture = asyncGetStock(codeList, manualGetStockInfoVo, map);
                 //新增最后剩下的
-                stockDetailsInfoMapper.batchSave(join);
+                stockDetailsInfoMapper.batchSave(listCompletableFuture);
             }
         } else {
             System.out.println("小于500条直接进这里");
@@ -227,60 +260,21 @@ public class StockServiceImpl implements IStockService {
     }
 
 
-    public CompletableFuture<List<StockDetailsInfo>> asyncGetStock(List<String> queryCodeList, ManualGetStockInfoVo manualGetStockInfoVo, HashMap<String, String> map, int num) {
-//        List<StockDetailsInfo> stockDetailsInfoList = new ArrayList<>();
+    public List<StockDetailsInfo> asyncGetStock(List<String> queryCodeList, ManualGetStockInfoVo manualGetStockInfoVo, HashMap<String, String> map) {
+        // todo stockDetailsInfoList参数不能直接传到task1方法中，如果传值，tast1返回return时为null,stockDetailsInfoList.addAll(s);报空指针
         List<StockDetailsInfo> stockDetailsInfoList = Collections.synchronizedList(new ArrayList<>(1024));
-        Semaphore semaphore = new Semaphore(queryCodeList.size());
-        for (String stockCode : queryCodeList) {
-            stockDetailsInfoList = asyncStock.task1(stockCode, stockDetailsInfoList, manualGetStockInfoVo, map, num++, semaphore);
-        }
-        return CompletableFuture.completedFuture(stockDetailsInfoList);
-    }
+        // todo com.test.common.util.HttpSslClientUtil   : Connection timed out: connect
+        // 如果线程过多，线程间切换，当某个线程第一次拿到资源，然后被中断，然后2.5秒后还没再次拿到资源，HttpSslClientUtil会报超时
+        // forEach改为lambda表达式，lambda的for循环可以定义CompletableFuture来接受， forEach不行，最终不能使用join，等待500线程全部执行完再入库
+        CompletableFuture[] completableFutures = queryCodeList.stream().map(stockCode -> CompletableFuture.supplyAsync(() -> {
+            List<StockDetailsInfo> stockDetailsInfos = task1(stockCode, manualGetStockInfoVo, map);
+            return stockDetailsInfos;
+        }, threadPoolTaskExecutor).
+                whenComplete((s, e) -> {
+                    stockDetailsInfoList.addAll(s);
+                })).toArray(CompletableFuture[]::new);
 
-    /**
-     * 手动自定义保存每日信息
-     *
-     * @param stockCode
-     * @param stockDetailsInfoList
-     * @param manualGetStockInfoVo
-     * @param map
-     * @return
-     */
-    public static List<StockDetailsInfo> task(String stockCode, List<StockDetailsInfo> stockDetailsInfoList,
-                                              ManualGetStockInfoVo manualGetStockInfoVo, HashMap<String, String> map, int i) {
-        String code = stockCode.substring(2, 8);
-        HashMap<String, String> paramMap = new HashMap<>(8);
-        paramMap.put("code", "cn_" + code);
-        paramMap.put("start", manualGetStockInfoVo.getStartDate());
-        paramMap.put("end", manualGetStockInfoVo.getEndDate());
-
-        String responseString = HttpSslClientUtil.httpGet(DETAILS_HISTORY_INFO_URL, paramMap, map);
-        int length = responseString.length();
-        String substring = responseString.substring(1, length - 2);
-        JSONObject jsonObject = JSONObject.parseObject(substring);
-        if (null == jsonObject || !jsonObject.containsKey("hq")) {
-            return stockDetailsInfoList;
-        }
-        JSONArray jsonArray = jsonObject.getJSONArray("hq");
-
-        Iterator<Object> it = jsonArray.iterator();
-        while (it.hasNext()) {
-            JSONArray jsonAry = (JSONArray) it.next();
-            String string = jsonAry.getString(0);
-            Date date = DateUtil.parseDate(string);
-            StockDetailsInfo stockDetailsInfo = StockDetailsInfo.builder().openingDate(date).
-                    stockName(STOCK_BASE_INFO_MAP.get(code)).
-                    stockCode(code).
-                    openingPriceToday(jsonAry.getString(1)).
-                    currentPrice(jsonAry.getString(2)).
-                    quoteChange(jsonAry.getString(4)).
-                    lowestPriceToday(jsonAry.getString(5)).
-                    highestPriceToday(jsonAry.getString(6)).
-                    volume(jsonAry.getString(7)).
-                    turnoverRate(jsonAry.getString(9)).build();
-            System.out.println(i++ + " ：  " + stockDetailsInfo);
-            stockDetailsInfoList.add(stockDetailsInfo);
-        }
+        CompletableFuture.allOf(completableFutures).join();
         return stockDetailsInfoList;
     }
 
