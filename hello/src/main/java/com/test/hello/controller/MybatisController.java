@@ -33,8 +33,7 @@ public class MybatisController {
 
     @PostMapping("/getStudentList")
     @ApiOperation("查询,根据年级，名字筛选")
-    public ResultBean<CommonPage<Student>> getStudentList(@ModelAttribute QueryStudent queryStudent) {
-        int a = 3/0;
+    public ResultBean<CommonPage<Student>> getStudentList(@RequestBody QueryStudent queryStudent) {
         PageHelper.startPage(queryStudent.getPageNum(),queryStudent.getPageSize());
         List<Student> students=iMybatisService.getStudents(queryStudent);
         return ResultBean.success(CommonPage.restPage(students));

@@ -14,18 +14,36 @@ spring:
         service-name: service-hello
 
   datasource:
-    url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://101.34.55.27:3306/stock?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: root
+#    password: root
+    password: Mysql123456@
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
 mybatis:
   mapper-locations: classpath*:mybatis-mappers/*.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+# 开启feign的hystrix支持,默认是false
 feign.hystrix.enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 #默认的hystrix连接服务降级超时时间为1秒,若方法调用1秒后没有返回数据,自动的触发降级逻辑
+
+
+ribbon:
+  #feign建立连接超时时间
+  ConnectTimeout: 5000
+  #feign建立连接之后，读取响应资源超时时间
+  ReadTimeout: 5000
 
 xxl:
   job:

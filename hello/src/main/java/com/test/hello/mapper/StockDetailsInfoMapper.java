@@ -2,6 +2,7 @@ package com.test.hello.mapper;
 
 import com.test.hello.pojo.dao.StockBaseInfo;
 import com.test.hello.pojo.dao.StockDetailsInfo;
+import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -27,4 +28,11 @@ public interface StockDetailsInfoMapper extends MyBatisBaseDao<StockDetailsInfo,
      * @return
      */
     StockDetailsInfo getStockDetailsInfo(StockDetailsInfo stockDetailsInfoList);
+
+    /**
+     * 根据条件筛选股票
+     * @param filterStockInfoVo
+     * @return
+     */
+    List<StockDetailsInfo> getStockDetailsList(FilterStockInfoVo filterStockInfoVo);
 }

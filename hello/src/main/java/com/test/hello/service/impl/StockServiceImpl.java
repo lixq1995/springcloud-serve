@@ -3,7 +3,7 @@ package com.test.hello.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.test.common.util.DateUtil;
+import com.test.common.util.DateUtils;
 import com.test.common.util.HttpSslClientUtil;
 import com.test.hello.mapper.StockDetailsInfoMapper;
 import com.test.hello.mapper.StockInfoMapper;
@@ -12,6 +12,10 @@ import com.test.hello.pojo.dao.StockDetailsInfo;
 import com.test.hello.pojo.dto.QueryStockBaseInfoDto;
 import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import com.test.hello.pojo.vo.request.ManualGetStockInfoVo;
+import com.test.hello.pojo.vo.response.FilterStockInfo;
+import com.test.hello.pojo.vo.response.KeepRisingStock;
+import com.test.hello.pojo.vo.response.KeepRisingTurnoverRateStock;
+import com.test.hello.pojo.vo.response.TurnoverRateStock;
 import com.test.hello.service.IStockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +25,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StopWatch;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static com.test.hello.config.LoadingStockConfig.STOCK_BASE_INFO_MAP;
 
@@ -133,7 +139,7 @@ public class StockServiceImpl implements IStockService {
             // 将单条股票数据通过~分割，获取其各个数据
             List<String> oneStockInfoList = Arrays.asList(stock.split("~"));
             String substringDate = oneStockInfoList.get(30).substring(0, 8);
-            Date date = DateUtil.parseDate1(substringDate);
+            Date date = DateUtils.parseDate1(substringDate);
             StockDetailsInfo stockDetailsInfo = StockDetailsInfo.builder().
                     stockName(oneStockInfoList.get(1)).
                     stockCode(oneStockInfoList.get(2)).
@@ -203,7 +209,7 @@ public class StockServiceImpl implements IStockService {
             while (it.hasNext()) {
                 JSONArray jsonAry = (JSONArray) it.next();
                 String string = jsonAry.getString(0);
-                Date date = DateUtil.parseDate(string);
+                Date date = DateUtils.parseDate(string);
                 StockDetailsInfo stockDetailsInfo = StockDetailsInfo.builder().openingDate(date).
                         stockName(STOCK_BASE_INFO_MAP.get(code)).
                         stockCode(code).
@@ -256,6 +262,7 @@ public class StockServiceImpl implements IStockService {
         } else {
             System.out.println("小于500条直接进这里");
         }
+        log.info("success");
         return "success";
     }
 
@@ -286,8 +293,102 @@ public class StockServiceImpl implements IStockService {
     }*/
 
     @Override
-    public List<StockDetailsInfo> filterStockInfo(FilterStockInfoVo filterStockInfoVo) {
-        return null;
+    public FilterStockInfo filterStockInfo(FilterStockInfoVo filterStockInfoVo) {
+        // 根据开始时间与结束时间查出所有符合的股票
+        HashMap<String, List> map = new HashMap<>();
+        List<StockDetailsInfo> stockDetailsList = stockDetailsInfoMapper.getStockDetailsList(filterStockInfoVo);
+        stockDetailsList.stream().forEach(stockDetailsInfo -> {
+            List<StockDetailsInfo> list = map.getOrDefault(stockDetailsInfo.getStockCode(), new ArrayList());
+            list.add(stockDetailsInfo);
+            map.put(stockDetailsInfo.getStockCode(), list);
+        });
+        FilterStockInfo filterStockInfo = new FilterStockInfo();
+        List<KeepRisingStock> keepRisingStockList = new ArrayList<>();
+        List<TurnoverRateStock> turnoverRateStockList = new ArrayList<>();
+        List<KeepRisingTurnoverRateStock> keepRisingTurnoverRateStockList = new ArrayList<>();
+        for (Map.Entry<String, List> stock : map.entrySet()) {
+            String key = stock.getKey();
+            List<StockDetailsInfo> stockList = stock.getValue();
+            System.out.println(JSON.toJSONString(stockList));
+            int openingDatesize = stockList.size();
+            // 按时间倒序排序
+            stockList.sort(Comparator.comparing(StockDetailsInfo::getOpeningDate).reversed());
+            List<Double> quoteChangeList = new ArrayList<>();
+            // 换手率
+            double turnoverRate = 0;
+            // 涨跌幅
+            double quoteChange = 0;
+            for (StockDetailsInfo detailsInfo : stockList) {
+                // 将获取的涨幅与换手率带有的%去掉
+                if (detailsInfo.getQuoteChange().contains("%")) {
+                    detailsInfo.setQuoteChange(detailsInfo.getQuoteChange().replace("%",""));
+                }
+                if (detailsInfo.getTurnoverRate().contains("%")) {
+                    detailsInfo.setTurnoverRate(detailsInfo.getTurnoverRate().replace("%",""));
+                }
+                // 将换手率为空的改为字符串0
+                if ("".equals(detailsInfo.getTurnoverRate())) {
+                    detailsInfo.setTurnoverRate("0");
+                }
+                // 统计换手率
+                turnoverRate = turnoverRate + Double.parseDouble(detailsInfo.getTurnoverRate());
+                // 统计涨跌幅
+                quoteChange = quoteChange + Double.parseDouble(detailsInfo.getQuoteChange());
+                // 将涨幅大于0的放入一个集合中
+                if (Double.parseDouble(detailsInfo.getQuoteChange()) > 0) {
+                    quoteChangeList.add(Double.parseDouble(detailsInfo.getQuoteChange()));
+                }
+            }
+            double endDateTurnoverRate = Double.parseDouble(stockList.get(0).getTurnoverRate());
+            // 除最后一天的平均换手率
+            double avgTurnoverRate = (turnoverRate-endDateTurnoverRate)/(openingDatesize - 1);
+
+            // 换手率大于xx倍的,涨幅大于xx的
+            if (filterStockInfoVo.getFilterContent().contains("换手率")) {
+                if (endDateTurnoverRate/avgTurnoverRate > filterStockInfoVo.getTurnoverRate() && quoteChange > filterStockInfoVo.getQuoteChange()) {
+                    TurnoverRateStock turnoverRateStock = new TurnoverRateStock();
+                    turnoverRateStock.setStockCode(key);
+                    turnoverRateStock.setStockName(STOCK_BASE_INFO_MAP.get(key));
+                    turnoverRateStock.setQuoteChange(quoteChange);
+                    turnoverRateStockList.add(turnoverRateStock);
+                }
+            }
+
+            // 连续上涨的
+            // 格式化小数
+            DecimalFormat df = new DecimalFormat("0.00");
+            String format = df.format((float) quoteChangeList.size() / openingDatesize);
+
+            // 涨幅天数大于xx的，涨幅大于xx的
+            if (filterStockInfoVo.getFilterContent().contains("保持上升")) {
+                if ((Double.parseDouble(format) > filterStockInfoVo.getRisingDays()) && quoteChange > filterStockInfoVo.getQuoteChange()) {
+                    KeepRisingStock keepRisingStock = new KeepRisingStock();
+                    keepRisingStock.setStockCode(key);
+                    keepRisingStock.setStockName(STOCK_BASE_INFO_MAP.get(key));
+                    keepRisingStock.setQuoteChange(quoteChange);
+                    keepRisingStockList.add(keepRisingStock);
+                }
+            }
+
+            // 同时满足换手率大于xx，涨幅天数大于xx的，涨幅大于xx的
+            if (filterStockInfoVo.getFilterContent().contains("换手加上升")) {
+                if ((Double.parseDouble(format) > filterStockInfoVo.getRisingDays()) && (endDateTurnoverRate/avgTurnoverRate > filterStockInfoVo.getTurnoverRate()) && quoteChange > filterStockInfoVo.getQuoteChange()) {
+                    KeepRisingTurnoverRateStock keepRisingTurnoverRateStock = new KeepRisingTurnoverRateStock();
+                    keepRisingTurnoverRateStock.setStockCode(key);
+                    keepRisingTurnoverRateStock.setQuoteChange(quoteChange);
+                    keepRisingTurnoverRateStock.setStockName(STOCK_BASE_INFO_MAP.get(key));
+                    keepRisingTurnoverRateStockList.add(keepRisingTurnoverRateStock);
+                }
+            }
+
+        }
+        turnoverRateStockList.sort(Comparator.comparing(TurnoverRateStock::getQuoteChange).reversed());
+        keepRisingStockList.sort(Comparator.comparing(KeepRisingStock::getQuoteChange).reversed());
+        keepRisingTurnoverRateStockList.sort(Comparator.comparing(KeepRisingTurnoverRateStock::getQuoteChange).reversed());
+        filterStockInfo.setKeepRisingStockList(keepRisingStockList);
+        filterStockInfo.setTurnoverRateStockList(turnoverRateStockList);
+        filterStockInfo.setKeepRisingTurnoverRateStockList(keepRisingTurnoverRateStockList);
+        return filterStockInfo;
     }
 
     // TODO 多线程，测试

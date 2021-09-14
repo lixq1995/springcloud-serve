@@ -18,10 +18,11 @@ spring:
           enabled: true
           lowerCaseServiceId: true #使用小写service-id
       routes:
-        - id: service-hi
-          uri: lb://service-hi #service-hi为hi服务配置在注册中心consul上的服务名
+        - id: service-hi # 唯一标识，通常使用服务id
+          uri: lb://service-hi #service-hi为hi服务配置在注册中心consul上的服务名，lb代表从注册中心获取服务，lb是Load Balance的缩写
           predicates:
             - Path=/hiservice/** # 匹配路径带有hiservice的则访问lb://service-hi服务 ，例：http://localhost:8083/hiservice/hi/test?hi=1323
+            # - Header=X-Request-Id, \d+ # 这个路由匹配“请求头包含X-Request-Id并且其值匹配正则表达式\d+”的任意请求
           filters:
             - StripPrefix=1
 

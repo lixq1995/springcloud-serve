@@ -3,10 +3,12 @@ package com.test.hello.controller;
 import com.test.hello.pojo.dao.StockDetailsInfo;
 import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import com.test.hello.pojo.vo.request.ManualGetStockInfoVo;
+import com.test.hello.pojo.vo.response.FilterStockInfo;
 import com.test.hello.service.IStockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,9 +65,9 @@ public class StockController {
 
     @PostMapping("/filterStockInfo")
     @ApiOperation("根据条件筛选股票")
-    public List<StockDetailsInfo> filterStockInfo(@RequestBody FilterStockInfoVo filterStockInfoVo) {
-        List<StockDetailsInfo> stockDetailsInfos = stockService.filterStockInfo(filterStockInfoVo);
-        return stockDetailsInfos;
+    public FilterStockInfo filterStockInfo(@RequestBody @Validated FilterStockInfoVo filterStockInfoVo) {
+        FilterStockInfo filterStockInfo = stockService.filterStockInfo(filterStockInfoVo);
+        return filterStockInfo;
     }
 
     @PostMapping("/testAsync")

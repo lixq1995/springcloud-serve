@@ -16,10 +16,10 @@ import java.util.Map;
  *
  * @author xuxueli 2018-08-19 01:24:11
  */
-public class DateUtil {
+public class DateUtils {
 
     // ---------------------- format parse ----------------------
-    private static Logger logger = LoggerFactory.getLogger(DateUtil.class);
+    private static Logger logger = LoggerFactory.getLogger(DateUtils.class);
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String DATE_FORMAT1 = "yyyyMMdd";

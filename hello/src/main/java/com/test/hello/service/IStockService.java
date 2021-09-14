@@ -3,6 +3,7 @@ package com.test.hello.service;
 import com.test.hello.pojo.dao.StockDetailsInfo;
 import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import com.test.hello.pojo.vo.request.ManualGetStockInfoVo;
+import com.test.hello.pojo.vo.response.FilterStockInfo;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public interface IStockService {
      * @param filterStockInfoVo
      * @return
      */
-    List<StockDetailsInfo> filterStockInfo(FilterStockInfoVo filterStockInfoVo);
+    FilterStockInfo filterStockInfo(FilterStockInfoVo filterStockInfoVo);
 
     /**
      * 测试多线程

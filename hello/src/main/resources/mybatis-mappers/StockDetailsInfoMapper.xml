@@ -286,4 +286,14 @@
       </if>
     </where>
   </select>
+
+  <select id="getStockDetailsList" parameterType="com.test.hello.pojo.vo.request.FilterStockInfoVo" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    stock_details_info
+    <where>
+      opening_date between #{startDate} and #{endDate}
+    </where>
+  </select>
 </mapper>

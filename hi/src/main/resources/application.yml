@@ -19,5 +19,11 @@ spring:
       password: root
       driver-class-name: com.mysql.cj.jdbc.Driver
 
+  profiles:
+      active: dev #默认为开发环境
+
+
+
+
 
 

@@ -20,7 +20,7 @@ import org.apache.http.util.EntityUtils;
 @Slf4j
 public class HttpSslClientUtil {
 
-  private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(25000).setConnectTimeout(25000).build();
+  private static RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(30000).setConnectTimeout(30000).build();
 
   private static final String DEFAULT_CONTENT_TYPE = "application/json";
 
