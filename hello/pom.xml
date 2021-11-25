@@ -6,18 +6,37 @@
 
     <groupId>com.test.springcloud</groupId>
     <artifactId>springcloud-serve-hello</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>../gateway</module>
-    </modules>
-
+    <!--删掉<packaging>pom</packaging>，引起数据库连接错误-->
 
     <dependencies>
         <dependency>
             <groupId>com.test.springcloud</groupId>
             <artifactId>springcloud-serve-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--文件上传下载相关pom，TestDownLoad与TestUpload-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.2</version>
         </dependency>
 
     </dependencies>

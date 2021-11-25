@@ -1,8 +1,10 @@
 package com.test.hello.controller;
 
+import com.test.hello.pojo.dto.FileDown;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.time.DateFormatUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,9 +40,9 @@ public class FileTestController {
 
 
     @RequestMapping(value = "upload",method = RequestMethod.POST)
-    public String upload(MultipartFile multipartFile, HttpServletRequest request) throws IOException {
+    public String upload(@RequestParam("file")MultipartFile multipartFile, HttpServletRequest request) throws IOException {
         //获取项目根路径
-        String uploadPath = "E:\\ideaTool\\ideaSource\\springcloud-serve\\hello\\src\\main\\resources";
+        String uploadPath = "D:\\testDownSrc";
         System.out.println("路径 = " + request.getSession().getServletContext().getRealPath("/"));
         System.out.println("文件名 = " + multipartFile.getOriginalFilename());
         System.out.println("文件类型 = " + multipartFile.getContentType());
@@ -57,7 +59,7 @@ public class FileTestController {
         // 获取文件类型
         String extension = FilenameUtils.getExtension(originalFilename);
         // todo 效验文件类型
-        if (fileType.contains(extension)) {
+        if (!fileType.contains(extension)) {
             System.out.println("文件不合法");
         }
         // 文件大小校验
@@ -67,18 +69,26 @@ public class FileTestController {
         return "success";
     }
 
-    @GetMapping("/download/{downFileName}")
-    public String downLoad(@PathVariable String downFileName,
+//    @GetMapping("/download/{downFileName}")
+//    @GetMapping("/download/file")
+    @PostMapping("/download/file")
+    public String downLoad(@RequestBody FileDown fileDown,/*@RequestParam(value = "fileName") String fileName,*/
                            HttpServletResponse response)
             throws UnsupportedEncodingException {
         //String filename="test.jpg";
-        String filename = downFileName;
-        String filePath = "C:/test";
+        String filename = fileDown.getFileName();
+//        String filename = fileName;
+        String filePath = "d:/testDownSrc";
         File file = new File(filePath + "/" + filename);
         //判断文件父目录及文件是否存在
         if (file.exists()) {
-            response.setContentType("application/vnd.ms-excel;charset=UTF-8");
-            response.setCharacterEncoding("UTF-8");
+            // todo application/vnd.ms-excel为各种文件对应的请求头类型
+            // https://blog.csdn.net/qq_15068711/article/details/113367483
+//            response.setContentType("application/vnd.ms-excel;charset=UTF-8");
+//            response.setContentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+            response.setContentType("application/octet-stream");
+//            response.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding(null);
             // response.setContentType("application/force-download");
             response.setHeader("Content-Disposition", "attachment;fileName=" + java.net.URLEncoder.encode(filename, "UTF-8"));
             byte[] buffer = new byte[1024];
@@ -107,9 +117,24 @@ public class FileTestController {
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+            } finally {
+                try {
+                    bis.close();
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return null;
+    }
+
+    /**
+     * 日期路径 即年/月/日 如2018/08/08
+     */
+    public static final String getDatePath() {
+        Date now = new Date();
+        return DateFormatUtils.format(now, "yyyy/MM/dd");
     }
 
     public static void main(String[] args) {

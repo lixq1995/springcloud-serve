@@ -1,5 +1,7 @@
 package com.test.hello.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.github.pagehelper.PageHelper;
 import com.test.common.result.CommonPage;
 import com.test.common.result.ResultBean;
@@ -47,6 +49,7 @@ public class MybatisController {
 
     @PostMapping("/add")
     public ResultBean save(@RequestBody @Validated(Save.class) Student student) {
+        String requestJson = JSON.toJSONString(student, SerializerFeature.WriteMapNullValue);
         iMybatisService.save(student);
         return ResultBean.success();
     }

@@ -11,10 +11,13 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 @Slf4j
@@ -147,5 +150,36 @@ public class HttpSslClientUtil {
       sb.append((String)param.getKey() + "=" + (String)param.getValue() + "&");
     }
     return sb.toString();
+  }
+
+  /**
+   * 传送json类型的post请求
+   *
+   * @param url
+   * @param json
+   * @return String
+   */
+  public static CloseableHttpResponse doPostJson(String url, String json, Map<String, String> headers) {
+    // 创建Httpclient对象
+    CloseableHttpClient httpClient = HttpClients.createDefault();
+    CloseableHttpResponse response = null;
+    String resultString = "";
+    try {
+      // 创建Http Post请求
+      HttpPost httpPost = new HttpPost(url);
+      // 创建请求内容
+      httpPost.addHeader("Content-Type", "application/json");
+      for (Map.Entry<String, String> header : headers.entrySet()) {
+        httpPost.addHeader(header.getKey(), header.getValue());
+      }
+      StringEntity entity = new StringEntity(json, "utf-8");
+      httpPost.setEntity(entity);
+      // 执行http请求
+      response = httpClient.execute(httpPost);
+//            resultString = EntityUtils.toString(response.getEntity(), "utf-8");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return response;
   }
 }
