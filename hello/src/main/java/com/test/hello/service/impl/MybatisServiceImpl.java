@@ -40,7 +40,7 @@ public class MybatisServiceImpl implements IMybatisService {
         return student;
     }
 
-    @Transactional(rollbackFor = Exception.class/*,propagation = Propagation.NESTED,isolation = Isolation.READ_UNCOMMITTED*/)
+    @Transactional(rollbackFor = Exception.class/*,propagation = Propagation.NESTED*//*,isolation = Isolation.READ_UNCOMMITTED*/)
     public void save(Student student) {
         mybatisMapper.insert(student);
         String name = student.getName();
@@ -48,7 +48,6 @@ public class MybatisServiceImpl implements IMybatisService {
         QueryStudent queryStudent = new QueryStudent();
         queryStudent.setKeyword(student.getName());
         List<Student> students = mybatisMapper.getStudents(queryStudent);
-        int i = 3/0;
         System.out.println(students);
     }
 
