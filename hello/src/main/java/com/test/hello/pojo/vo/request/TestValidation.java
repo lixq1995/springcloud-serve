@@ -1,5 +1,6 @@
 package com.test.hello.pojo.vo.request;
 
+import com.test.common.validator.FlagValidator;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
@@ -23,32 +24,33 @@ import java.util.List;
 @Data
 public class TestValidation {
 
-    @NotBlank(message = "不能为空")
+    @NotBlank(message = "Null不能为空")
     @ApiModelProperty(value = "判空")
     private String Null;
 
     @Size(min = 2,max = 20,message = "只能输入2-20长度")
-    @NotBlank(message = "不能为空")
+    @NotBlank(message = "length不能为空")
     @ApiModelProperty(value = "长度")
     private String length;
 
     @ApiModelProperty(value = "标识，1暂存，2保存")
+    @FlagValidator(value = {"1","2"}, message = "状态不正确")
     private String flag;
 
-    @NotNull(message = "不能为空")
+    @NotNull(message = "userList不能为空")
     @ApiModelProperty(value = "list")
     private List<@Valid User> userList;
 
-    @Min(value = 1,message = "必须大于等于1")
+    @Min(value = 1,message = "pageNum必须大于等于1")
     @Max(value = 100,message = "必须小于等于100")
     @ApiModelProperty(value = "第几页")
     private String pageNum;
 
-    @Min(value = 1,message = "必须大于等于1")
+    @Min(value = 1,message = "pageSize必须大于等于1")
     @ApiModelProperty(value = "页大小")
     private Integer pageSize;
 
-    @Range(min=0, max=120,message = "年龄必须在0至120之间")
+    @Range(min=0, max=120,message = "age年龄必须在0至120之间")
     @ApiModelProperty(value = "年龄")
     private Integer age;
 
@@ -57,7 +59,7 @@ public class TestValidation {
     private String PatternTest;
 
     @Email(message = "请输入正确的邮箱格式")
-    @NotBlank(message = "不能为空")
+    @NotBlank(message = "email不能为空")
     @ApiModelProperty(value = "邮箱")
     private String email;
 
