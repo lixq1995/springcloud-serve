@@ -18,8 +18,16 @@ spring:
 #  nginx:
 #    host: http://192.168.91.128/
 
+#  datasource:
+#        url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#        username: root
+#        password: root
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+
   datasource:
-        url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
-        username: root
-        password: root
-        driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.34.55.27:3306/stock?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    #    url: jdbc:mysql://localhost:3306/springcloud_serve?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    #    password: root
+    password: Mysql123456@
+    driver-class-name: com.mysql.jdbc.Driver

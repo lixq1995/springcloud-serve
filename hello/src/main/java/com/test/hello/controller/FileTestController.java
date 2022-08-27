@@ -7,15 +7,16 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author by Lixq
@@ -41,7 +42,13 @@ public class FileTestController {
 
     @RequestMapping(value = "upload",method = RequestMethod.POST)
     public String upload(@RequestParam("file")MultipartFile multipartFile, HttpServletRequest request) throws IOException {
-        //获取项目根路径
+        // 方式二：也可从HttpServletRequest中
+//        StandardMultipartHttpServletRequest httpServletRequest = (StandardMultipartHttpServletRequest) request;
+//        Iterator<String> fileNames = httpServletRequest.getFileNames();
+//        MultipartFile multipartFile = httpServletRequest.getFile(fileNames.next());
+
+
+        // 获取项目根路径
         String uploadPath = "D:\\testDownSrc";
         System.out.println("路径 = " + request.getSession().getServletContext().getRealPath("/"));
         System.out.println("文件名 = " + multipartFile.getOriginalFilename());
@@ -127,6 +134,21 @@ public class FileTestController {
             }
         }
         return null;
+    }
+
+    /**
+     * 将base64转换为文件并存储到指定位置
+     */
+    public static boolean base64ToFile(String base64Str, String filePath) {
+        if (base64Str == null && filePath == null) {
+            return false;
+        }
+        try {
+            Files.write(Paths.get(filePath), Base64.getDecoder().decode(base64Str), StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 
     /**

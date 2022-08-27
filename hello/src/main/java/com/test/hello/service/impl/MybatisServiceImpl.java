@@ -44,7 +44,7 @@ public class MybatisServiceImpl implements IMybatisService {
     public void save(Student student) {
         mybatisMapper.insert(student);
         String name = student.getName();
-        String response = iHelloService.getHi(name);
+//        String response = iHelloService.getHi(name);
         QueryStudent queryStudent = new QueryStudent();
         queryStudent.setKeyword(student.getName());
         List<Student> students = mybatisMapper.getStudents(queryStudent);

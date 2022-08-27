@@ -27,7 +27,7 @@ import java.util.Arrays;
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.test")
 @EnableAsync
-//@MapperScan("com.test.hello.mapper")
+@MapperScan("com.test.hello.mapper")
 public class HelloApplication {
 
     public static void main(String[] args) {

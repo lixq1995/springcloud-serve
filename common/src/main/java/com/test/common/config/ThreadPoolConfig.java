@@ -19,7 +19,7 @@ public class ThreadPoolConfig {
 
     private static volatile ThreadPoolConfig poolManager;
 
-    private static final int CORE_POOL_SIZE = 50;
+    private static final int CORE_POOL_SIZE = 10;
 
     private static final int MAX_POOL_SIZE = 200;
 
@@ -74,5 +74,9 @@ public class ThreadPoolConfig {
         } catch (RejectedExecutionException e) {
             log.error(e.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+        ThreadPoolConfig.getInstance().addTaskToThreadPool(new Thread());
     }
 }

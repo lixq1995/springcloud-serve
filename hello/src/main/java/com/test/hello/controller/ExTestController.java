@@ -30,6 +30,8 @@ public class ExTestController {
     @GetMapping("/business")
     @ApiOperation("测试全局异常BusinessException")
     public ResultBean business(int num) {
+        System.out.println("测试全局异常BusinessException");
+        log.info("测试全局异常BusinessException");
         if (num < 3) {
             throw new BusinessException(HelloEnum.EXCEPTION_ONE);
         }
@@ -60,7 +62,8 @@ public class ExTestController {
     @GetMapping("/validationModelAttribute")
     @ApiOperation("测试全局异常validationModelAttribute注解异常")
     public ResultBean validationModelAttribute(@ModelAttribute @Validated TestValidation testValidation) {
-        System.out.println(testValidation);
+        log.info("test");
         return ResultBean.success();
     }
+
 }
