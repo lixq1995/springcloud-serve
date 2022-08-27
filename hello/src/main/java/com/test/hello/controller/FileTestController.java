@@ -137,14 +137,22 @@ public class FileTestController {
     }
 
     /**
-     * 将base64转换为文件并存储到指定位置
+     * ba64文件操作
      */
-    public static boolean base64ToFile(String base64Str, String filePath) {
+    public static boolean base64ToFile(String base64Str, String filePath,String fileName) {
         if (base64Str == null && filePath == null) {
             return false;
         }
         try {
-            Files.write(Paths.get(filePath), Base64.getDecoder().decode(base64Str), StandardOpenOption.CREATE);
+            // nio将文件转为base64
+            byte[] bytes = Files.readAllBytes(Paths.get(filePath.concat(fileName)));
+            String base64 = Base64.getEncoder().encodeToString(bytes);
+
+            // nio将base64转为文件，并保存到本地
+            Files.write(Paths.get(filePath + fileName), Base64.getMimeDecoder().decode(base64), StandardOpenOption.CREATE);
+
+            // 删除文件
+            Files.delete(Paths.get(filePath + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
