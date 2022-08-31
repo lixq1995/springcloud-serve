@@ -3,8 +3,8 @@ package com.test.hello.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.test.common.util.DateUtils;
-import com.test.common.util.HttpSslClientUtil;
+import com.test.common.util.date.DateUtils;
+import com.test.common.util.http.HttpSslClientUtil;
 import com.test.hello.mapper.StockDetailsInfoMapper;
 import com.test.hello.mapper.StockInfoMapper;
 import com.test.hello.pojo.dao.StockBaseInfo;
@@ -270,7 +270,7 @@ public class StockServiceImpl implements IStockService {
     public List<StockDetailsInfo> asyncGetStock(List<String> queryCodeList, ManualGetStockInfoVo manualGetStockInfoVo, HashMap<String, String> map) {
         // todo stockDetailsInfoList参数不能直接传到task1方法中，如果传值，tast1返回return时为null,stockDetailsInfoList.addAll(s);报空指针
         List<StockDetailsInfo> stockDetailsInfoList = Collections.synchronizedList(new ArrayList<>(1024));
-        // todo com.test.common.util.HttpSslClientUtil   : Connection timed out: connect
+        // todo com.test.common.util.http.HttpSslClientUtil   : Connection timed out: connect
         // 如果线程过多，线程间切换，当某个线程第一次拿到资源，然后被中断，然后2.5秒后还没再次拿到资源，HttpSslClientUtil会报超时
         // forEach改为lambda表达式，lambda的for循环可以定义CompletableFuture来接受， forEach不行，最终不能使用join，等待500线程全部执行完再入库
         CompletableFuture[] completableFutures = queryCodeList.stream().map(stockCode -> CompletableFuture.supplyAsync(() -> {

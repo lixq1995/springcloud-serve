@@ -1,9 +1,11 @@
-package com.test.common.util;
+package com.test.common.util.http;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
+
+import com.test.common.util.http.HttpsTrustManager;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;

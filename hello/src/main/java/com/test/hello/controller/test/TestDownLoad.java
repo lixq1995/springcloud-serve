@@ -1,7 +1,7 @@
 package com.test.hello.controller.test;
 
 import com.alibaba.fastjson.JSON;
-import com.test.common.util.HttpSslClientUtil;
+import com.test.common.util.http.HttpSslClientUtil;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;

@@ -1,4 +1,4 @@
-package com.test.common.util;
+package com.test.common.util.http;
 
 import com.google.gson.Gson;
 import com.google.json.JsonSanitizer;

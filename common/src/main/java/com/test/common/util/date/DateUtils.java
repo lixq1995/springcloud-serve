@@ -1,5 +1,6 @@
-package com.test.common.util;
+package com.test.common.util.date;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -165,4 +166,45 @@ public class DateUtils {
         return c.getTime();
     }
 
+    private static String[] parsePatterns = {
+            "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM",
+            "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM",
+            "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM"};
+
+    /**
+     * 日期型字符串转化为日期 格式
+     */
+    public static Date parseDateObj(Object str)
+    {
+        if (str == null)
+        {
+            return null;
+        }
+        try
+        {
+            return org.apache.commons.lang3.time.DateUtils.parseDate(str.toString(), parsePatterns);
+        }
+        catch (ParseException e)
+        {
+            return null;
+        }
+    }
+
+    /**
+     * 日期路径 即年/月/日 如2018/08/08
+     */
+    public static final String datePath()
+    {
+        Date now = new Date();
+        return DateFormatUtils.format(now, "yyyy/MM/dd");
+    }
+
+    /**
+     * 日期路径 即年/月/日 如20180808
+     */
+    public static final String dateTime()
+    {
+        Date now = new Date();
+        return DateFormatUtils.format(now, "yyyyMMdd");
+    }
 }

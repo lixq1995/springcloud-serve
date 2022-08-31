@@ -1,4 +1,4 @@
-package com.test.common.util;
+package com.test.common.util.http;
 
 import java.security.KeyStore;
 import java.security.KeyStoreException;
