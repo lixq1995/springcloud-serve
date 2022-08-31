@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.test.common.util.DateUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author 
@@ -109,9 +113,88 @@ public class StockDetailsInfo implements Serializable {
     private String peRatioStatic;
 
     /**
-     * 开市时间
+     * 开市时间 —— 歪枣返回时间
      */
+    @JSONField(name = "tdate")
     private Date openingDate;
 
+    /**
+     * 成交额（元）
+     */
+    @JSONField(name = "cje")
+    private String transaction;
+
+    /**
+     * 流入资金（元）
+     */
+    @JSONField(name = "lrzj")
+    private String inflowFunds;
+
+    /**
+     * 流出资金（元）
+     */
+    @JSONField(name = "lczj")
+    private String outflowFunds;
+
+    /**
+     * 净流入（元）
+     */
+    @JSONField(name = "jlr")
+    private String netInflow;
+
+    /**
+     * 净流入率（%）
+     */
+    @JSONField(name = "jlrl")
+    private String netInflowRate;
+
+    /**
+     * 每日股票资金流动返回股票名字
+     */
+    @JSONField(name = "dm")
+    private String stockCodeUpdate;
+
+    /**
+     * 每日股票资金流动返回开市时间
+     */
+//    仅对入参，出参有效
+//    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JSONField(name = "t")
+    private Date openingDateUpdate/* = DateUtils.parseDate("2021-07-07")*/;
+
+    /**
+     * 歪枣股票code
+     */
+    @JSONField(name = "code")
+    private String waizaoStockCode;
+
+    /**
+     * 歪枣流入资金（元）
+     */
+    @JSONField(name = "zljlr")
+    private String inflowFunds1;
+
+
     private static final long serialVersionUID = 1L;
+
+    public Date getOpeningDateUpdate() {
+        return openingDateUpdate;
+    }
+
+    public void setOpeningDateUpdate(Date openingDateUpdate) {
+        // 去掉时分秒
+        String format = DateUtils.format(openingDateUpdate, "yyyy-MM-dd HH:mm:ss");
+        this.openingDateUpdate = DateUtils.parseDate(format);
+    }
+
+    public String getStockCodeUpdate() {
+        return stockCodeUpdate;
+    }
+
+    public void setStockCodeUpdate(String stockCodeUpdate) {
+        // todo 去掉sz,sh字母，优化直接删掉所有字母
+        String substring = stockCodeUpdate.substring(2, stockCodeUpdate.length());
+        this.stockCodeUpdate = substring;
+    }
 }

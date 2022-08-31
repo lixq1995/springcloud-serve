@@ -21,12 +21,13 @@
     <result column="pe_ratio_dynamic" jdbcType="VARCHAR" property="peRatioDynamic" />
     <result column="pe_ratio_static" jdbcType="VARCHAR" property="peRatioStatic" />
     <result column="opening_date" jdbcType="DATE" property="openingDate" />
+    <result column="inflow_funds1" jdbcType="VARCHAR" property="inflowFunds1" />
   </resultMap>
   <sql id="Base_Column_List">
     id, stock_name, stock_code, current_price, yesterday_price, opening_price_today, 
     volume, inner_disk, outer_disk, quote_change, highest_price_today, lowest_price_today, 
     turnover_rate, pe_ratio_ttm, vibration_amplitude, total_market_capitalization, pe_ratio_dynamic, 
-    pe_ratio_static, opening_date
+    pe_ratio_static, opening_date,inflow_funds1
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -296,4 +297,69 @@
       opening_date between #{startDate} and #{endDate}
     </where>
   </select>
+
+
+  <update id="batchUpdate" parameterType="java.util.List">
+    update stock_details_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="transaction =case" suffix="end,">
+        <foreach collection="stockDetailsInfoList" item="stockDetailsInfo">
+          <if test="stockDetailsInfo.transaction!=null">
+            when stock_code = #{stockDetailsInfo.stockCodeUpdate} and opening_date = #{stockDetailsInfo.openingDateUpdate} then #{stockDetailsInfo.transaction}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="inflow_funds =case" suffix="end,">
+        <foreach collection="stockDetailsInfoList" item="stockDetailsInfo">
+          <if test="stockDetailsInfo.inflowFunds!=null">
+            when stock_code = #{stockDetailsInfo.stockCodeUpdate} and opening_date = #{stockDetailsInfo.openingDateUpdate} then #{stockDetailsInfo.inflowFunds}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="outflow_funds =case" suffix="end,">
+        <foreach collection="stockDetailsInfoList" item="stockDetailsInfo">
+          <if test="stockDetailsInfo.outflowFunds!=null">
+            when stock_code = #{stockDetailsInfo.stockCodeUpdate} and opening_date = #{stockDetailsInfo.openingDateUpdate} then #{stockDetailsInfo.outflowFunds}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="net_inflow =case" suffix="end,">
+        <foreach collection="stockDetailsInfoList" item="stockDetailsInfo">
+          <if test="stockDetailsInfo.netInflow!=null">
+            when stock_code = #{stockDetailsInfo.stockCodeUpdate} and opening_date = #{stockDetailsInfo.openingDateUpdate} then #{stockDetailsInfo.netInflow}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="net_inflow_rate =case" suffix="end,">
+        <foreach collection="stockDetailsInfoList" item="stockDetailsInfo">
+          <if test="stockDetailsInfo.netInflowRate!=null">
+            when stock_code = #{stockDetailsInfo.stockCodeUpdate} and opening_date = #{stockDetailsInfo.openingDateUpdate} then #{stockDetailsInfo.netInflowRate}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <where>
+      <foreach collection="stockDetailsInfoList" separator="or" item="stockDetailsInfo">
+        stock_code = #{stockDetailsInfo.stockCodeUpdate} and opening_date = #{stockDetailsInfo.openingDateUpdate}
+      </foreach>
+    </where>
+  </update>
+
+  <update id="batchUpdate1" parameterType="java.util.List">
+    update stock_details_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="inflow_funds1 =case" suffix="end,">
+        <foreach collection="stockDetailsInfoList" item="stockDetailsInfo">
+          <if test="stockDetailsInfo.inflowFunds1!=null">
+            when stock_code = #{stockDetailsInfo.waizaoStockCode} and opening_date = #{stockDetailsInfo.openingDate} then #{stockDetailsInfo.inflowFunds1}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <where>
+      <foreach collection="stockDetailsInfoList" separator="or" item="stockDetailsInfo">
+        stock_code = #{stockDetailsInfo.waizaoStockCode} and opening_date = #{stockDetailsInfo.openingDate}
+      </foreach>
+    </where>
+  </update>
 </mapper>

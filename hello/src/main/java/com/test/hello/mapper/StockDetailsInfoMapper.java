@@ -35,4 +35,16 @@ public interface StockDetailsInfoMapper extends MyBatisBaseDao<StockDetailsInfo,
      * @return
      */
     List<StockDetailsInfo> getStockDetailsList(FilterStockInfoVo filterStockInfoVo);
+
+    /**
+     * 批量修改
+     * @param stockDetailsInfoList
+     */
+    int batchUpdate(@Param(value = "stockDetailsInfoList") List<StockDetailsInfo> stockDetailsInfoList);
+
+    /**
+     * 批量修改
+     * @param stockDetailsInfoList
+     */
+    int batchUpdate1(@Param(value = "stockDetailsInfoList") List<StockDetailsInfo> stockDetailsInfoList);
 }

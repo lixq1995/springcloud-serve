@@ -1,5 +1,6 @@
 package com.test.hello.controller;
 
+import com.test.hello.config.TestMap;
 import com.test.hello.service.IHelloService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,6 +12,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 
 /**
  * @Classname HelloController
@@ -34,6 +36,10 @@ public class HelloController {
         HttpServletRequest request = attributes.getRequest();
         String token = request.getHeader("token");
         System.out.println("token :" + token);
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("1","1");
+        hashMap.putAll(TestMap.getMap());
+        System.out.println(hashMap);
 //        int a = 3/0;
         return "hello";
     }

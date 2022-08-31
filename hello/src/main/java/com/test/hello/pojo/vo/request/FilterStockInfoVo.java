@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * @author by Lixq
- * @Classname FilterStockInfoVo
+ * @Classname FilterStockInfoByFundVo
  * @Description TODO
  * @Date 2021/6/27 19:05
  */

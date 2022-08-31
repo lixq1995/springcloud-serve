@@ -3,6 +3,7 @@ package com.test.hello.controller;
 import com.test.hello.pojo.dao.StockDetailsInfo;
 import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import com.test.hello.pojo.vo.request.ManualGetStockInfoVo;
+import com.test.hello.pojo.vo.request.stock.FilterStockInfoByFundVo;
 import com.test.hello.pojo.vo.response.FilterStockInfo;
 import com.test.hello.service.IStockService;
 import io.swagger.annotations.Api;
@@ -56,6 +57,28 @@ public class StockController {
         return baseInfo;
     }
 
+//    @GetMapping("/timedTaskGetStockLiquidity")
+//    @ApiOperation("定时任务获取股票资金流动----作废，接口返回数据与实际同花顺对不上")
+//    public String timedTaskGetStockLiquidity() {
+//        String baseInfo = stockService.timedTaskGetStockLiquidity();
+//        return baseInfo;
+//    }
+
+    @GetMapping("/timedTaskGetStockLiquidity1")
+    @ApiOperation("定时任务获取股票资金流动----歪枣")
+    public String timedTaskGetStockLiquidity1() {
+        String baseInfo = stockService.timedTaskGetStockLiquidity1();
+        return baseInfo;
+    }
+
+    @GetMapping("/timedTaskGetStockPlate")
+    @ApiOperation("定时任务获取股票板块信息----歪枣")
+    public String timedTaskGetStockPlate() {
+        String baseInfo = stockService.timedTaskGetStockPlate();
+        return baseInfo;
+    }
+
+
     @PostMapping("/manualGetStockInfo")
     @ApiOperation("手动获取股票数据")
     public String manualGetStockInfo(@RequestBody ManualGetStockInfoVo manualGetStockInfoVo) {
@@ -67,6 +90,13 @@ public class StockController {
     @ApiOperation("根据条件筛选股票")
     public FilterStockInfo filterStockInfo(@RequestBody @Validated FilterStockInfoVo filterStockInfoVo) {
         FilterStockInfo filterStockInfo = stockService.filterStockInfo(filterStockInfoVo);
+        return filterStockInfo;
+    }
+
+    @PostMapping("/filterStockInfoByFund")
+    @ApiOperation("短线根据资金流向与换手率筛选")
+    public FilterStockInfo filterStockInfoByFund(@RequestBody @Validated FilterStockInfoByFundVo filterStockInfoByFundVo) {
+        FilterStockInfo filterStockInfo = stockService.filterStockInfoByFund(filterStockInfoByFundVo);
         return filterStockInfo;
     }
 

@@ -12,5 +12,8 @@ import lombok.Data;
 public class KeepRisingTurnoverRateStock {
     private String stockName;
     private String stockCode;
+    /**
+     * 涨幅
+     */
     private double quoteChange;
 }

@@ -14,10 +14,10 @@ import javax.validation.constraints.NotNull;
 @Data
 public class User {
 
-    @NotNull(message = "不能为空")
+    @NotNull(message = "id不能为空")
     private Integer id;
 
-    @NotBlank(message = "不能为空")
+    @NotBlank(message = "name不能为空")
     private String name;
 
 }

@@ -3,6 +3,7 @@ package com.test.hello.service;
 import com.test.hello.pojo.dao.StockDetailsInfo;
 import com.test.hello.pojo.vo.request.FilterStockInfoVo;
 import com.test.hello.pojo.vo.request.ManualGetStockInfoVo;
+import com.test.hello.pojo.vo.request.stock.FilterStockInfoByFundVo;
 import com.test.hello.pojo.vo.response.FilterStockInfo;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -30,6 +31,24 @@ public interface IStockService {
     String timedTaskGetStockInfo();
 
     /**
+     * 定时任务获取股票资金流动
+     * @return
+     */
+    String timedTaskGetStockLiquidity();
+
+    /**
+     * 定时任务获取股票资金流动
+     * @return
+     */
+    String timedTaskGetStockLiquidity1();
+
+    /**
+     * 定时任务获取股票板块信息----歪枣
+     * @return
+     */
+    String timedTaskGetStockPlate();
+
+    /**
      * 手动获取股票数据
      * @param manualGetStockInfoVo
      * @return
@@ -42,6 +61,13 @@ public interface IStockService {
      * @return
      */
     FilterStockInfo filterStockInfo(FilterStockInfoVo filterStockInfoVo);
+
+    /**
+     * 短线根据资金流向与换手率筛选
+     * @param filterStockInfoVo
+     * @return
+     */
+    FilterStockInfo filterStockInfoByFund(FilterStockInfoByFundVo filterStockInfoVo);
 
     /**
      * 测试多线程

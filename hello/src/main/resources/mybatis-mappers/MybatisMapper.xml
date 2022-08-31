@@ -96,7 +96,7 @@
         </foreach>
     </update>-->
 
-    <!--批量修改方式二-->
+    <!--批量修改方式二  "age =case",其中age对应数据库表字段名-->
     <!--https://www.awaimai.com/2103.html  ，见 3.2 更新多值-->
     <update id="batchUpdate" parameterType="java.util.List">
         update

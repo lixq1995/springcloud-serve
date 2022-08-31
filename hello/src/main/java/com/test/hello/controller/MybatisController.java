@@ -67,14 +67,14 @@ public class MybatisController {
     }
 
     @PostMapping("/batchAdd")
-    @ApiOperation("批量修改测试")
+    @ApiOperation("批量新增测试")
     public ResultBean batchSave(@RequestBody List<Student> studentList) {
         iMybatisService.batchSave(studentList);
         return ResultBean.success();
     }
 
     @PostMapping("/batchUpdate")
-    @ApiOperation("批量新增测试")
+    @ApiOperation("批量修改测试")
     public ResultBean batchUpdate(@RequestBody List<Student> studentList) {
         iMybatisService.batchUpdate(studentList);
         return ResultBean.success();
