@@ -15,6 +15,7 @@ import java.util.Properties;
 
 /**
  * mybatis拦截器，自动注入创建人、创建时间、修改人、修改时间
+ * // todo https://blog.csdn.net/qq_34253002/article/details/116922275
  * @Author scott
  * @Date  2019-01-19
  *
