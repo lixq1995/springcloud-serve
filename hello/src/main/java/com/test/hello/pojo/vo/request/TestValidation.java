@@ -61,6 +61,7 @@ public class TestValidation {
     @Email(message = "请输入正确的邮箱格式")
     @NotBlank(message = "email不能为空")
     @ApiModelProperty(value = "邮箱")
+    @Pattern(regexp = "^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\\\.)+[a-z]{2,}$",message = "请输入正确的有效格式")
     private String email;
 
 }

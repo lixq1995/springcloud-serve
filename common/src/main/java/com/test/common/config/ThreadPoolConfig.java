@@ -49,6 +49,7 @@ public class ThreadPoolConfig {
     }
 
     private void initThreadPool() {
+        // 设置线程池中的线程名
         ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("localTest-%d").build();
 
         /**

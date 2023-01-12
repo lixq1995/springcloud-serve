@@ -63,6 +63,9 @@ public class Main {
         server();
     }
 
+    // todo 客户端加密，客户端私钥，服务端公钥  。  客户端解密，服务端公钥，客户端私钥
+    // todo 服务端解密，客户端公钥，服务端私钥  。  服务端解密，
+
     public static void client(TreeMap<String, Object> params) throws Exception {
         // 生成RSA签名
         String sign = EncryUtil.handleRSA(params, clientPrivateKey);
